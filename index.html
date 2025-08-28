@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lago River Monsters - Pesca Tropicali a Gambolò</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Lago River Monsters - Pesca Sportiva a Gambolò (PV)</title>
+    <meta name="description" content="Lago River Monsters a Gambolò: pesca ai tropicali, storioni e carpe. Esperienza unica con specie esotiche come Arapaima, Gar e Pacu. Prenotazioni: 348 451 9244">
+    <meta name="keywords" content="pesca sportiva, lago tropicali, Gambolò, Pavia, Arapaima, storioni, carpe, pesca catch and release">
+    
     <style>
         * {
             margin: 0;
@@ -13,33 +15,46 @@
         }
 
         html {
-            scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Now:wght@400;500;600&display=swap');
+
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Now', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #1a1a1a;
-            background: #f8f8f8;
+            color: #1a3d2e;
+            background: url('https://i.ibb.co/YF9WCtCf/11-Progetto-senza-titolo.png') center center fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
-        /* Header */
+        /* Header Styles */
         header {
-            background: #1a3d2e;
-            color: white;
-            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
             position: fixed;
             top: 0;
-            width: 100%;
+            left: 0;
+            right: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+            border-bottom: 3px solid #FFD700;
         }
 
         header.hidden {
@@ -48,192 +63,103 @@
 
         .header-content {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            gap: 1rem;
-            padding: 1rem 0;
+            padding: 0.2rem 0;
+            height: 2.5cm;
         }
 
         .logo {
-            height: 80px;
-            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-left: 1cm;
         }
 
         .logo img {
-            height: 100%;
-            width: auto;
+            width: 5.4cm;
+            height: 5.4cm;
+            border-radius: 50%;
+            object-fit: contain;
         }
 
-        .nav-container {
+        nav {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 0;
-            padding: 0;
+            gap: 2rem;
         }
 
         nav a {
-            color: white;
             text-decoration: none;
+            color: #1a3d2e;
             font-family: 'Roboto Mono', monospace;
-            font-weight: 400;
-            transition: color 0.3s;
-            cursor: pointer;
-            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            border: 2px solid transparent;
         }
 
         nav a:hover, nav a.active {
-            color: #FFFF00;
+            background: #FFD700;
+            color: #1a3d2e;
+            transform: translateY(-2px);
+            border: 2px solid #1a3d2e;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
         }
 
-        .contact-icons {
-            position: absolute;
-            bottom: 1rem;
-            right: 2rem;
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .nav-right {
             display: flex;
-            gap: 0.8rem;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .header-social {
+            display: flex;
+            gap: 1rem;
             align-items: center;
         }
 
-        .contact-icon {
-            background: #FFFF00;
-            color: #1a1a1a;
+        .header-social-icon {
             width: 40px;
             height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s ease;
             text-decoration: none;
-            transition: all 0.3s;
-            font-size: 1.2rem;
-            font-weight: bold;
+            color: #1a3d2e;
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid #1a3d2e;
         }
 
-        .contact-icon:hover {
-            background: #FFFF33;
-            transform: scale(1.1);
-        }
-
-        .contact-icon.whatsapp {
-            background: #25D366;
+        .header-social-icon:hover {
+            transform: translateY(-2px) scale(1.1);
+            background: #1a3d2e;
             color: white;
-        }
-
-        .contact-icon.whatsapp:hover {
-            background: #128C7E;
-        }
-
-        .contact-icon.facebook {
-            background: #1877F2;
-            color: white;
-        }
-
-        .contact-icon.facebook:hover {
-            background: #166FE5;
-        }
-
-        .contact-icon.instagram {
-            background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4);
-            color: white;
-        }
-
-        .contact-icon.instagram:hover {
-            background: linear-gradient(45deg, #E1306C, #C13584, #833AB4, #405DE6);
-        }
-
-        /* Animation classes */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .slide-in-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.6s ease-out;
-        }
-
-        .slide-in-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .slide-in-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: all 0.6s ease-out;
-        }
-
-        .slide-in-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .scale-in {
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all 0.6s ease-out;
-        }
-
-        .scale-in.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .bounce-in {
-            opacity: 0;
-            transform: translateY(50px) scale(0.9);
-            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        .bounce-in.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        .rotate-in {
-            opacity: 0;
-            transform: rotate(-10deg) scale(0.8);
-            transition: all 0.7s ease-out;
-        }
-
-        .rotate-in.visible {
-            opacity: 1;
-            transform: rotate(0deg) scale(1);
-        }
-
-        .slide-up {
-            opacity: 0;
-            transform: translateY(60px);
-            transition: all 0.8s ease-out;
-        }
-
-        .slide-up.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         /* Main Content */
         main {
-            margin-top: 100px;
-            min-height: calc(100vh - 200px);
-            text-align: center;
+            margin-top: 2.5cm;
+            min-height: 100vh;
         }
 
         .page {
@@ -245,18 +171,49 @@
             display: block;
         }
 
+        .section {
+            background: none;
+            border-radius: 0;
+            padding: 2rem 0;
+            margin: 2rem auto;
+            box-shadow: none;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        h3 {
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 400;
+        }
+
+        p, li {
+            font-family: 'Now', sans-serif;
+        }
+
+        /* Hero Section */
         .hero {
+            position: relative;
+            height: 100vh;
             background-image: url('https://i.ibb.co/B5L6WR42/66-Tropicale-selvaggio-unico.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            min-height: 70vh;
-            height: auto;
-            position: relative;
-            display: grid;
-            grid-template-columns: 1fr 8px 1fr;
+            margin: 0;
+            margin-top: -2.5cm;
+            padding-top: 0;
+            display: flex;
             align-items: center;
-            padding: 2rem 1rem;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
             overflow: hidden;
         }
 
@@ -267,421 +224,104 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to top, rgba(26, 61, 46, 0.6) 0%, rgba(26, 61, 46, 0.2) 50%, transparent 100%);
+            background: linear-gradient(135deg, rgba(26, 61, 46, 0.3) 0%, rgba(45, 90, 61, 0.3) 100%);
         }
 
-        .hero-left {
+        .hero-content {
             position: relative;
             z-index: 2;
             display: flex;
             flex-direction: column;
+            width: 100%;
+            height: 100%;
             align-items: center;
             justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
             text-align: center;
-            padding: 2rem;
-        }
-
-        .hero-divider {
-            position: relative;
-            z-index: 2;
-            background: #FFFF00;
-            height: 60%;
-            width: 8px;
-            box-shadow: 0 0 20px rgba(255, 255, 0, 0.5);
-            align-self: center;
-        }
-
-        .hero-right {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
         }
 
         .hero-title {
             font-family: 'Roboto Mono', monospace;
+            font-size: 6rem;
             font-weight: 700;
-            font-size: clamp(2rem, 8vw, 6rem);
-            color: #FFFF00;
-            text-transform: uppercase;
-            letter-spacing: clamp(1px, 0.5vw, 3px);
-            margin-bottom: 1.5rem;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
-            line-height: 1.1;
-            text-align: right;
-            padding: 0;
-            word-break: break-word;
-            hyphens: auto;
+            color: #FFD700;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            text-align: center;
         }
 
-        .hero-carousel {
-            width: min(380px, 90vw);
-            height: min(500px, 60vh);
-            max-width: 100%;
+        .fish-ticker {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            height: 220px;
             overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            border: 3px solid #FFFF00;
-            cursor: pointer;
-            padding: 10px;
-            background: rgba(0,0,0,0.1);
-            margin: 0 auto;
+            background: rgba(26, 61, 46, 0.8);
+            backdrop-filter: blur(10px);
+            border-top: 3px solid #FFD700;
+            border-bottom: 3px solid #FFD700;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
         }
 
-        .hero-carousel::-webkit-scrollbar {
-            display: none;
-        }
-
-        .hero-carousel {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .carousel-container {
+        .ticker-container {
             display: flex;
-            flex-direction: column;
-            animation: verticalScroll 90s infinite linear;
+            animation: horizontalScroll 120s infinite linear;
+            height: 100%;
+            align-items: center;
         }
 
-        .carousel-container:hover {
-            animation-play-state: paused;
-        }
-
-        .carousel-item {
-            width: calc(100% - 20px);
-            height: calc(100% - 20px);
-            aspect-ratio: 1;
+        .ticker-item {
+            width: 250px;
+            height: 200px;
             flex-shrink: 0;
-            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 5px;
         }
 
-        .carousel-item img {
+        .ticker-item img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            border-radius: 0;
-            background: rgba(255,255,255,0.1);
-            display: block;
-            margin: 0 auto;
-            object-position: center center;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
-        @keyframes verticalScroll {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-5400px); }
+        @keyframes horizontalScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-7200px); }
         }
 
         .cta-button {
-            background: #FFFF00;
-            color: #1a1a1a;
-            padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
-            border: none;
-            border-radius: 8px;
+            display: inline-block;
+            background: #FFD700;
+            color: #1a3d2e;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
             font-family: 'Roboto Mono', monospace;
             font-weight: 700;
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(255, 255, 0, 0.3);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+            margin: 0.5rem;
+            border: 3px solid #1a3d2e;
             text-transform: uppercase;
-            letter-spacing: clamp(0.5px, 0.2vw, 1px);
-            text-align: center;
-            max-width: 100%;
-            word-wrap: break-word;
         }
 
         .cta-button:hover {
-            background: #FFFF33;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 255, 0, 0.4);
-        }
-
-        .section {
-            margin-bottom: 8rem;
-            padding: 0 2rem;
-        }
-
-        .section h2 {
-            font-family: 'Roboto Mono', monospace;
-            font-weight: 700;
-            font-size: 2.2rem;
-            color: #1a3d2e;
-            margin-bottom: 3rem;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .section h3 {
-            font-family: 'Roboto Mono', monospace;
-            font-weight: 400;
-            font-size: 1.5rem;
-            color: #1a3d2e;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Fishing Type Separators */
-        .fishing-type-header {
-            background: linear-gradient(135deg, #1a3d2e 0%, #0d2818 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            margin: 3rem 0 2rem 0;
-            box-shadow: 0 8px 25px rgba(26, 61, 46, 0.3);
-            border-left: 8px solid #FFD700;
-        }
-
-        .fishing-type-header h2 {
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .fishing-type-header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+            background: #1a3d2e;
             color: #FFD700;
-            font-weight: 500;
+            border: 3px solid #FFD700;
         }
 
-        .tropical-header {
-            background: linear-gradient(135deg, #FFD700 0%, #FFC107 100%);
-            color: #1a1a1a;
-            border-left-color: #1a3d2e;
-        }
-
-        .tropical-header h2 {
-            color: #1a1a1a;
-        }
-
-        .tropical-header p {
-            color: #1a3d2e;
-        }
-
-        .traditional-header {
-            background: linear-gradient(135deg, #1a3d2e 0%, #0d2818 100%);
-            border-left-color: #FFD700;
-        }
-
-        .info-box {
-            background: white;
-            border-left: 5px solid #FFFF00;
-            padding: 2.5rem;
-            margin: 3rem 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .info-box:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 255, 0, 0.2);
-            border-left-color: #FFFF33;
-        }
-
-        .warning-box {
-            background: #FFFFC4;
-            border-left: 5px solid #FFFF00;
-            padding: 2.5rem;
-            margin: 3rem 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .warning-box:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 255, 0, 0.2);
-            border-left-color: #FFFF33;
-        }
-
-        .rules-box {
-            background: #f0f8f0;
-            border-left: 5px solid #1a3d2e;
-            padding: 2.5rem;
-            margin: 3rem 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .rules-box:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(26, 61, 46, 0.2);
-            border-left-color: #27AE60;
-        }
-
-        .tropical-box {
-            background: #FFFFC4;
-            border-left: 5px solid #FFFF00;
-            padding: 2.5rem;
-            margin: 3rem 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .tropical-box:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 255, 0, 0.2);
-            border-left-color: #FFFF33;
-        }
-
-        .traditional-box {
-            background: #f0f8f0;
-            border-left: 5px solid #1a3d2e;
-            padding: 2.5rem;
-            margin: 3rem 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .traditional-box:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(26, 61, 46, 0.2);
-            border-left-color: #27AE60;
-        }
-
-        /* Fix list spacing */
-        .info-box ul, .warning-box ul, .rules-box ul, .tropical-box ul, .traditional-box ul {
-            margin: 1rem 0;
-            padding-left: 0;
-            list-style: none;
-        }
-
-        .info-box li, .warning-box li, .rules-box li, .tropical-box li, .traditional-box li {
-            margin-bottom: 1rem;
-            line-height: 1.8;
-            padding-left: 0;
-        }
-
-        .info-box h3, .warning-box h3, .rules-box h3, .tropical-box h3, .traditional-box h3 {
-            color: #1a3d2e;
-            font-family: 'Roboto Mono', monospace;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Open content styles */
-        .open-content {
-            background: none;
-            padding: 1rem 0;
-            margin: 2rem 0;
-        }
-
-        .open-content h3 {
-            color: #1a3d2e;
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-            border-bottom: 2px solid #FFFF00;
-            padding-bottom: 0.5rem;
-            display: inline-block;
-            font-family: 'Roboto Mono', monospace;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .open-content ul {
-            margin: 1rem 0;
-            padding-left: 0;
-            list-style: none;
-        }
-
-        .open-content li {
-            margin-bottom: 1rem;
-            line-height: 1.8;
-            position: relative;
-            padding-left: 0;
-        }
-
-        .highlight-text {
-            background: linear-gradient(120deg, #FFFF00 0%, #FFFF33 100%);
-            color: #1a1a1a;
-            padding: 1rem 1.5rem;
-            border-radius: 10px;
-            margin: 1.5rem 0;
-            box-shadow: 0 4px 15px rgba(255, 255, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .highlight-text:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 255, 0, 0.4);
-        }
-
-        .highlight-text h3 {
-            color: #1a1a1a !important;
-            font-family: 'Roboto Mono', monospace;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .two-lakes-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .lake-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .lake-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #FFFF00, #FFFF33);
-        }
-
-        .lake-card.traditional:before {
-            background: linear-gradient(90deg, #1a3d2e, #0d2818);
-        }
-
-        .lake-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .lake-card h3 {
-            font-family: 'Roboto Mono', monospace;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .lake-icon {
-            width: 144px;
-            height: 144px;
-            margin: 0 auto 1rem;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-
-        .lake-card:hover .lake-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
+        /* Grid Layout */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -689,575 +329,382 @@
             margin: 2rem 0;
         }
 
+        .tariff-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        /* Card Styles */
         .card {
             background: white;
+            border-radius: 10px;
             padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 3px solid #FFD700;
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .card h3 {
             font-family: 'Roboto Mono', monospace;
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .tropical-card {
-            border-top: 4px solid #FFFF00;
-        }
-
-        .traditional-card {
-            border-top: 4px solid #1a3d2e;
-        }
-
-        .fish-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 1rem;
-            display: block;
-        }
-
-        .price-tag {
-            background: #FFFF00;
-            color: #1a1a1a;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-family: 'Roboto Mono', monospace;
-            font-weight: 700;
-            display: inline-block;
-            margin: 0.5rem 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .price-tag.traditional {
-            background: #1a3d2e;
-            color: white;
-        }
-
-        .contact-info {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin: 2rem 0;
-        }
-
-        .contact-info h3 {
             color: #1a3d2e;
-            margin-bottom: 1rem;
-            font-family: 'Roboto Mono', monospace;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .contact-info p {
-            margin-bottom: 0.5rem;
+        .card p {
+            color: #1a3d2e;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
         }
 
-        .lake-image {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, #1a3d2e 0%, #FFFF00 50%, #1a3d2e 100%);
-            border-radius: 12px;
-            margin: 2rem 0;
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 1.5rem 0;
+        }
+
+        .card ul li {
+            padding: 0.8rem 0;
+            color: #1a3d2e;
+            position: relative;
+            padding-left: 2rem;
+            margin-left: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .card ul li:hover {
+            color: #FFD700;
+            transform: translateX(5px);
+        }
+
+        .card ul li:before {
+            content: "🎣";
+            position: absolute;
+            left: -1rem;
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Lake Section Styles */
+        .lake-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .lake-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .lake-image::before {
+        .lake-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><circle cx="100" cy="150" r="25" fill="%23FFFF00" opacity="0.8"/><circle cx="200" cy="100" r="30" fill="%23FFFF33" opacity="0.7"/><circle cx="300" cy="180" r="20" fill="%23FFFF00" opacity="0.6"/><ellipse cx="50" cy="250" rx="40" ry="20" fill="%231a3d2e"/><ellipse cx="350" cy="280" rx="30" ry="15" fill="%231a3d2e"/></svg>');
-            background-size: cover;
+            height: 8px;
+            transition: all 0.3s ease;
         }
 
-        /* Footer */
-        footer {
-            background: #1a3d2e;
-            color: white;
-            padding: 4rem 0 2rem 0;
-            margin-top: 5rem;
+        .tropical-lake::before {
+            background: linear-gradient(90deg, #FFD700 0%, #FFA500 100%);
         }
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            align-items: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            min-height: 400px;
+        .traditional-lake::before {
+            background: linear-gradient(90deg, #1a3d2e 0%, #2d5a3d 100%);
         }
 
-        .footer-map {
-            grid-column: 1;
-            text-align: center;
+        .lake-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
         }
 
-        .footer-center {
-            grid-column: 2;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .footer-logo {
-            height: 120px;
-            margin-bottom: 1rem;
-        }
-
-        .footer-logo img {
-            height: 100%;
-            width: auto;
-        }
-
-        .footer-center h3 {
-            color: #FFFF00;
+        .lake-card h3 {
             font-family: 'Roboto Mono', monospace;
+            font-size: 2rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .footer-buttons {
             display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            grid-column: 3;
-            align-self: center;
-            justify-self: end;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .footer-button {
-            background: #FFFF00;
-            color: #1a1a1a;
-            padding: 0.7rem 1.2rem;
-            border: none;
-            border-radius: 6px;
+        .tropical-lake h3 {
+            color: #FFA500;
+        }
+
+        .traditional-lake h3 {
+            color: #1a3d2e;
+        }
+
+        .lake-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #1a3d2e;
+            line-height: 1.8;
+        }
+
+        /* Tropical Cards */
+        .tropical-card {
+            border-left: 5px solid #FFD700;
+            background: linear-gradient(135deg, #fffef7 0%, #ffffff 100%);
+        }
+
+        .tropical-card:hover {
+            border-left: 5px solid #FFA500;
+            box-shadow: 0 15px 40px rgba(255, 165, 0, 0.3);
+        }
+
+        /* Traditional Cards */
+        .traditional-card {
+            border-left: 5px solid #1a3d2e;
+            background: linear-gradient(135deg, #f8fffe 0%, #ffffff 100%);
+        }
+
+        .traditional-card:hover {
+            border-left: 5px solid #2d5a3d;
+            box-shadow: 0 15px 40px rgba(26, 61, 46, 0.3);
+        }
+
+        /* Non-boxed content */
+        .content-outside {
+            background: none;
+            padding: 2rem 0;
+            border-radius: 0;
+            box-shadow: none;
+            border-left: none;
+        }
+
+        .content-outside h3 {
             font-family: 'Roboto Mono', monospace;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            color: #FFD700;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        .footer-button:hover {
-            background: #FFFF33;
-            transform: translateY(-2px);
+        .content-outside p, .content-outside li {
+            color: white;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 1.5rem;
-            text-align: center;
-            font-size: 0.9rem;
-            opacity: 0.8;
+        .content-outside ul li:before {
+            content: "⭐";
+            color: #FFD700;
         }
 
-        /* Desktop Large Screens */
-        @media (min-width: 1400px) {
-            .container {
-                max-width: 1400px;
-            }
-
-            .hero {
-                min-height: 75vh;
-                padding: 3rem 2rem;
-            }
-
-            .hero-carousel {
-                width: min(420px, 30vw);
-                height: min(550px, 65vh);
-            }
-
-            .carousel-item {
-                height: calc((30vw - 40px) * 0.95);
-                max-height: 400px;
-            }
-
-            .section h2 {
-                font-size: 2.5rem;
-            }
-
-            .grid {
-                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            }
+        /* Fish Gallery */
+        .fish-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
         }
 
-        /* Desktop Medium Screens */
-        @media (min-width: 1200px) and (max-width: 1399px) {
-            .container {
-                max-width: 1200px;
-            }
-
-            .hero {
-                min-height: 70vh;
-                padding: 2.5rem 1.5rem;
-            }
-
-            .hero-carousel {
-                width: min(380px, 28vw);
-                height: min(500px, 60vh);
-            }
-
-            .carousel-item {
-                height: calc((28vw - 40px) * 0.95);
-                max-height: 360px;
-            }
-        }
-
-        /* Desktop Small Screens */
-        @media (min-width: 992px) and (max-width: 1199px) {
-            .container {
-                max-width: 1000px;
-                padding: 0 15px;
-            }
-
-            .hero {
-                min-height: 65vh;
-                padding: 2rem 1rem;
-            }
-
-            .hero-carousel {
-                width: min(320px, 25vw);
-                height: min(450px, 55vh);
-            }
-
-            .carousel-item {
-                height: calc((25vw - 40px) * 0.95);
-                max-height: 300px;
-            }
-
-            .contact-icons {
-                right: 1rem;
-            }
-
-            .grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 1.5rem;
-            }
-
-            .section h2 {
-                font-size: 2rem;
-            }
-        }
-
-        /* Tablet Landscape */
-        @media (min-width: 769px) and (max-width: 991px) {
-            .container {
-                max-width: 900px;
-                padding: 0 20px;
-            }
-
-            .header-content {
-                padding: 0.5rem 0;
-            }
-
-            .logo {
-                height: 70px;
-            }
-
-            .hero {
-                min-height: 60vh;
-                grid-template-columns: 1fr 6px 1fr;
-                gap: 1rem;
-                padding: 1.5rem 0.5rem;
-            }
-
-            .hero-carousel {
-                width: min(280px, 35vw);
-                height: min(400px, 50vh);
-            }
-
-            .carousel-item {
-                height: calc((35vw - 40px) * 0.9);
-                max-height: 260px;
-            }
-
-            .hero-divider {
-                height: 50%;
-            }
-
-            .contact-icons {
-                right: 1rem;
-                bottom: 0.5rem;
-            }
-
-            .contact-icon {
-                width: 35px;
-                height: 35px;
-                font-size: 1rem;
-            }
-
-            nav ul {
-                gap: 1.5rem;
-            }
-
-            nav a {
-                font-size: 0.9rem;
-            }
-
-            .grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 1.5rem;
-            }
-
-            .two-lakes-container {
-                gap: 1.5rem;
-            }
-
-            .section h2 {
-                font-size: 1.8rem;
-            }
-
-            .fishing-type-header h2 {
-                font-size: 2rem;
-            }
-        }
-
-        /* Species Grid */
-        .species-grid {
+        /* Fish Images Grid */
+        .fish-images-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
             margin: 2rem 0;
         }
 
-        .species-item {
-            text-align: center;
-            background: white;
-            border-radius: 10px;
-            padding: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .species-item:hover {
-            transform: scale(1.05);
-        }
-
-        .species-item img {
+        .fish-image-item {
             width: 100%;
             height: 200px;
             object-fit: contain;
-            border-radius: 8px;
-            background: #f8f8f8;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        /* Responsive for species grid */
-        @media (max-width: 1200px) {
-            .species-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+        .fish-image-item:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
 
-        @media (max-width: 768px) {
-            .species-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-            
-            .species-item img {
-                height: 150px;
-            }
-            
-            div[style*="grid-template-columns: 1fr 1fr"] {
-                grid-template-columns: 1fr !important;
-            }
-            
-            div[style*="grid-template-columns: repeat(4, 1fr)"] {
-                grid-template-columns: repeat(2, 1fr) !important;
-            }
+        .fish-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
 
-        @media (max-width: 480px) {
-            .species-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .species-item img {
-                height: 180px;
-            }
-            
-            div[style*="grid-template-columns: repeat(4, 1fr)"] {
-                grid-template-columns: 1fr !important;
-            }
+        .fish-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .contact-icons {
-                position: static;
-                margin-top: 1rem;
-            }
-
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            nav ul {
-                justify-content: center;
-                gap: 1rem;
-            }
-
-            .hero {
-                min-height: auto;
-                height: auto;
-                grid-template-columns: 1fr;
-                grid-template-rows: auto auto auto;
-                gap: 1.5rem;
-                padding: 2rem 1rem;
-            }
-
-            .hero-divider {
-                width: 80%;
-                height: 6px;
-                justify-self: center;
-            }
-
-            .hero-carousel {
-                width: min(300px, 85vw);
-                height: min(400px, 50vh);
-                justify-self: center;
-            }
-
-            .hero-title {
-                text-align: center;
-            }
-
-            .carousel-item {
-                height: calc((85vw - 40px) * 0.9);
-                max-height: 280px;
-            }
-
-            main {
-                margin-top: 160px;
-            }
-
-            .grid {
-                grid-template-columns: 1fr;
-            }
-
-            .fishing-type-header h2 {
-                font-size: 2rem;
-            }
-
-            .two-lakes-container {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                min-height: auto;
-                text-align: center;
-            }
-
-            .footer-map {
-                grid-column: 1;
-                order: 1;
-            }
-
-            .footer-center {
-                grid-column: 1;
-                order: 2;
-            }
-
-            .footer-buttons {
-                grid-column: 1;
-                order: 3;
-                justify-self: center;
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .footer-map iframe {
-                width: 280px;
-                height: 200px;
-            }
+        .fish-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #1a3d2e 0%, #FFD700 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            transition: all 0.3s ease;
         }
 
-        .mobile-menu {
-            display: none;
+        .fish-card:hover .fish-image {
+            background: linear-gradient(135deg, #FFD700 0%, #1a3d2e 100%);
+            transform: scale(1.05);
         }
 
-        @media (max-width: 600px) {
-            .mobile-menu {
-                display: block;
-                background: none;
-                border: none;
-                color: white;
-                font-size: 1.5rem;
-                cursor: pointer;
-            }
-
-            .nav-container {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: #1a3d2e;
-                padding: 1rem;
-                flex-direction: column;
-            }
-
-            .nav-container.active {
-                display: flex;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            main {
-                margin-top: 100px;
-            }
-
-            .hero {
-                padding: 1.5rem 0.5rem;
-                gap: 1rem;
-            }
-
-            .hero-carousel {
-                width: min(250px, 80vw);
-                height: min(350px, 45vh);
-            }
-
-            .carousel-item {
-                height: calc((80vw - 40px) * 0.9);
-                max-height: 230px;
-            }
+        .fish-info {
+            padding: 1.5rem;
         }
 
+        .fish-info h3 {
+            font-family: 'Roboto Mono', monospace;
+            color: #1a3d2e;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
 
+        .fish-info p {
+            color: #1a3d2e;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .fish-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #FFD700;
+            font-weight: 600;
+        }
+
+        /* Special Boxes */
+        .highlight-text {
+            background: linear-gradient(135deg, #FFF9C4 0%, #FFE082 100%);
+            border: 2px solid #FFD700;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #f8fffe 0%, #ffffff 100%);
+            border: 2px solid #1a3d2e;
+            border-left: 8px solid #1a3d2e;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #f8fffe 0%, #ffffff 100%);
+            border: 2px solid #1a3d2e;
+            border-left: 8px solid #1a3d2e;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .tropical-box {
+            background: linear-gradient(135deg, #FFF9C4 0%, #FFE082 100%);
+            border: 2px solid #FFD700;
+            border-left: 8px solid #FFD700;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        /* Fishing Type Headers */
+        .fishing-type-header {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 3rem 0 2rem 0;
+            color: white;
+        }
+
+        .tropical-header {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+        }
+
+        .traditional-header {
+            background: linear-gradient(135deg, #1a3d2e 0%, #2d5a3d 100%);
+        }
+
+        .fishing-type-header h2 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .fishing-type-header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        /* Price Tags */
+        .price-tag {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #1a3d2e;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+            margin: 1rem 0;
+            display: inline-block;
+        }
+
+        .price-tag.traditional {
+            background: linear-gradient(135deg, #1a3d2e 0%, #2d5a3d 100%);
+            color: white;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Fish Icons */
+        .fish-icon {
+            width: 80px;
+            height: 50px;
+            margin: 0 auto 1rem auto;
+            display: block;
+        }
 
         /* Fixed Booking Button */
         .fixed-booking-btn {
@@ -1266,113 +713,627 @@
             right: 20px;
             background: #25D366;
             color: white;
-            padding: 12px 20px;
+            padding: 15px 20px;
             border-radius: 50px;
             text-decoration: none;
-            font-family: 'Roboto Mono', monospace;
-            font-weight: 700;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            z-index: 1001;
+            font-weight: 600;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            animation: pulse 2s infinite;
         }
 
         .fixed-booking-btn:hover {
-            background: #128C7E;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
         }
 
-        .fixed-booking-btn .whatsapp-icon {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
+        .whatsapp-icon {
+            width: 24px;
+            height: 24px;
         }
 
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        /* Footer */
+        footer {
+            background: rgba(26, 26, 26, 0.95);
+            color: white;
+            padding: 1.5rem 0 1rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            min-height: 220px;
+        }
+
+        .footer-left {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .footer-center {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            transform: translateY(-2cm);
+        }
+
+        .footer-logo img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 0;
+            object-fit: contain;
+        }
+
+        .footer-center h3 {
+            margin-bottom: 0;
+            color: #FF6B35;
+            margin-top: 0;
+            font-size: 1.1rem;
+        }
+
+        .footer-center p {
+            margin: 0;
+            font-size: 0.85rem;
+            line-height: 1.2;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-social-icons {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .footer-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        .phone-icon {
+            background: #25D366;
+        }
+
+        .whatsapp-icon-footer {
+            background: #25D366;
+        }
+
+        .facebook-icon {
+            background: #1877F2;
+        }
+
+        .instagram-icon {
+            background: linear-gradient(45deg, #F56040, #E1306C, #C13584, #833AB4);
+        }
+
+        .email-icon {
+            background: #1a3d2e;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #ccc;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.6s ease;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .bounce-in {
+            opacity: 0;
+            transform: scale(0.3);
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .bounce-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .rotate-in {
+            opacity: 0;
+            transform: rotate(-180deg) scale(0.5);
+            transition: all 0.8s ease;
+        }
+
+        .rotate-in.visible {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        .slide-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Additional Scroll Animations */
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.8s ease;
+        }
+
+        .zoom-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .flip-in {
+            opacity: 0;
+            transform: rotateY(-90deg);
+            transition: all 0.8s ease;
+        }
+
+        .flip-in.visible {
+            opacity: 1;
+            transform: rotateY(0deg);
+        }
+
+        .slide-in-up {
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-down {
+            opacity: 0;
+            transform: translateY(-100px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-down.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hover Animations */
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+            background: #1a3d2e;
+            color: #FFD700;
+            border: 3px solid #FFD700;
+        }
+
+        .lake-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1400px;
             }
-            50% {
-                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.7);
+            
+            .hero-title {
+                font-size: 7rem;
             }
-            100% {
-                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            
+            .fish-images-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 2rem;
             }
         }
 
+        @media (max-width: 1200px) {
+            .fish-images-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .tariff-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
+        @media (max-width: 900px) {
+            .fish-images-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .lake-section {
+                grid-template-columns: 1fr;
+            }
+        }
 
         @media (max-width: 768px) {
-            .fixed-booking-btn {
-                bottom: 15px;
-                right: 15px;
-                padding: 10px 16px;
-                font-size: 0.8rem;
+            .header-content {
+                padding: 0.5rem 0;
+                height: 2cm;
             }
-            
-            .fixed-booking-btn .whatsapp-icon {
-                width: 18px;
-                height: 18px;
-            }
-        }
 
-        @media (max-width: 480px) {
-            .fixed-booking-btn {
-                bottom: 10px;
-                right: 10px;
-                padding: 8px 12px;
-                font-size: 0.75rem;
+            .logo {
+                margin-left: 0.5cm;
             }
-            
-            .fixed-booking-btn .whatsapp-icon {
-                width: 16px;
-                height: 16px;
-            }
-        }
 
-        /* Extra Small Mobile */
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
+            .logo img {
+                width: 3.5cm;
+                height: 3.5cm;
+            }
+
+            .nav-right {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .header-social {
+                gap: 0.5rem;
+            }
+
+            .header-social-icon {
+                width: 30px;
+                height: 30px;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
             }
 
             .hero {
-                padding: 1rem 0.5rem;
+                margin-top: -2cm;
+                padding-top: 0;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero {
+                height: 60vh;
+            }
+
+            .fish-ticker {
+                height: 120px;
+            }
+
+            .ticker-item {
+                width: 150px;
+                height: 100px;
+                margin: 0 15px;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
                 gap: 1rem;
             }
 
-            .hero-carousel {
-                width: min(220px, 75vw);
-                height: min(320px, 40vh);
+            .tariff-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
             }
 
-            .carousel-item {
-                height: calc((75vw - 40px) * 0.9);
-                max-height: 200px;
+            .fish-gallery {
+                grid-template-columns: 1fr;
             }
 
-            .section h2 {
-                font-size: 1.5rem;
+            .fish-images-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
             }
 
-            .fishing-type-header h2 {
-                font-size: 1.6rem;
+            .lake-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .footer-center {
+                transform: translateY(0);
+            }
+
+            .footer-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .footer-logo img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .fixed-booking-btn {
+                bottom: 10px;
+                right: 10px;
+                padding: 12px 16px;
+                font-size: 0.9rem;
+            }
+
+            .mega-fishing-box {
+                padding: 2rem 1rem;
+            }
+
+            .mega-box-header h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 1.5rem 1rem;
+                margin: 1rem 0;
             }
 
             .card {
                 padding: 1.5rem;
             }
 
-            .info-box, .warning-box, .rules-box, .tropical-box, .traditional-box {
-                padding: 1.5rem;
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
             }
+        }
+
+        /* Navigation Container for Mobile */
+        #nav-container {
+            display: contents;
+        }
+
+        @media (max-width: 768px) {
+            #nav-container {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+                border-radius: 0 0 15px 15px;
+                z-index: 1000;
+            }
+
+            #nav-container.active {
+                display: block;
+            }
+
+            #nav-container nav {
+                display: flex;
+                position: static;
+                background: none;
+                box-shadow: none;
+                padding: 1rem;
+            }
+
+            .header-social {
+                order: -1;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        /* Open Content Styles */
+        .open-content {
+            background: linear-gradient(135deg, #f8fffe 0%, #ffffff 100%);
+            border: 2px solid #1a3d2e;
+            border-left: 8px solid #1a3d2e;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        /* Transparent Green Box */
+        .transparent-green-box {
+            background: rgba(26, 61, 46, 0.5);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 215, 0, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .transparent-green-box h3 {
+            color: #FFD700;
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .transparent-green-box p, .transparent-green-box li {
+            color: white;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .transparent-green-box ul li:before {
+            content: "⭐";
+            color: #FFD700;
+        }
+
+        .open-content h3 {
+            color: #1a3d2e;
+            margin-bottom: 1rem;
+        }
+
+        .open-content ul li {
+            color: #1a3d2e;
+        }
+
+        .open-content ul li:before {
+            color: #FFD700;
+        }
+
+        /* Mega Fishing Boxes */
+        .mega-fishing-box {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tropical-mega-box {
+            border: 3px solid #FFD700;
+            background: linear-gradient(135deg, #fffef7 0%, #ffffff 100%);
+        }
+
+        .traditional-mega-box {
+            border: 3px solid #1a3d2e;
+            background: linear-gradient(135deg, #f8fffe 0%, #ffffff 100%);
+        }
+
+        .mega-box-header {
+            text-align: center;
+            padding: 2rem 0;
+            border-bottom: 2px solid #eee;
+            margin-bottom: 3rem;
+        }
+
+        .mega-box-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tropical-mega-box .mega-box-header h2 {
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .traditional-mega-box .mega-box-header h2 {
+            color: #1a3d2e;
+        }
+
+        .mega-box-header p {
+            font-size: 1.3rem;
+            color: #1a3d2e;
+            font-weight: 500;
         }
     </style>
 </head>
@@ -1381,563 +1342,448 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="https://i.ibb.co/CKKf7Hpz/lago-river-monsters.png" alt="Lago River Monsters" onerror="this.src=''; this.alt='Logo non disponibile'; this.style.display='none';">
+                    <img src="https://i.ibb.co/5ggbNQzg/1515lago-river-monsters.png" alt="Lago River Monsters" onerror="this.src=''; this.alt='Logo non disponibile'; this.style.display='none';">
                 </div>
                 
-                <button class="mobile-menu" onclick="toggleMenu()">☰</button>
-                
-                <div class="nav-container" id="nav-container">
-                    <nav>
-                        <ul>
-                            <li><a href="#" onclick="showPage('home')" class="active">Homepage</a></li>
-                            <li><a href="#" onclick="showPage('about')">Chi Siamo / Il Lago</a></li>
-                            <li><a href="#" onclick="showPage('fishing')">Le Nostre Specie</a></li>
-                            <li><a href="#" onclick="showPage('rules')">Regole Generali</a></li>
-                            <li><a href="#" onclick="showPage('prices')">Tariffe</a></li>
-                            <li><a href="#" onclick="showPage('contact')">Contatti</a></li>
-                        </ul>
-                    </nav>
+                <div class="nav-right">
+                    <div id="nav-container">
+                        <nav>
+                            <a href="#" onclick="showPage('home')" class="active">Home</a>
+                            <a href="#" onclick="showPage('fishing')">Pesca</a>
+                            <a href="#" onclick="showPage('rules')">Regole</a>
+                            <a href="#" onclick="showPage('prices')">Tariffe</a>
+                            <a href="#" onclick="showPage('contact')">Contatti</a>
+                        </nav>
+                    </div>
+                    
+                    <div class="header-social">
+                        <a href="https://wa.me/393484519244" class="header-social-icon" target="_blank" title="WhatsApp">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/LagoRiverMonsters" class="header-social-icon" target="_blank" title="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/lagorivermonsters" class="header-social-icon" target="_blank" title="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
                 
-                <div class="contact-icons">
-                    <a href="https://wa.me/393484519244" class="contact-icon whatsapp" title="WhatsApp">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.facebook.com/lagorivermonsters/?locale=it_IT" class="contact-icon facebook" title="Facebook" target="_blank">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.facebook.com/lagorivermonsters/?locale=it_IT" class="contact-icon instagram" title="Instagram" target="_blank">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
-                    </a>
-                    <a href="tel:+393484519244" class="contact-icon phone" title="Chiama">
-                        <span>📞</span>
-                    </a>
+                <div class="mobile-menu" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- Homepage -->
+        <!-- Home Page -->
         <div id="home" class="page active">
-            <div class="hero fade-in">
-                <div class="hero-left">
-                    <h1 class="hero-title">Tropicale,<br>selvaggio,<br>unico.</h1>
-                    <a href="#" onclick="showPage('contact')" class="cta-button">Prenota la tua giornata di pesca</a>
-                </div>
-                
-                <div class="hero-divider"></div>
-                
-                <div class="hero-right">
-                    <div class="hero-carousel">
-                        <div class="carousel-container">
-                            <div class="carousel-item">
-                                <img src="https://i.ibb.co/SDgJdwXv/1.png" alt="Pesce tropicale 1" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://i.ibb.co/tPDwTGcq/2.png" alt="Pesce tropicale 2" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://i.ibb.co/SwcM43PD/3.png" alt="Pesce tropicale 3" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://i.ibb.co/2156Gs5n/4.png" alt="Pesce tropicale 4" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://i.ibb.co/rKNSDWfB/5.png" alt="Pesce tropicale 5" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://i.ibb.co/F4bJh4MX/6.png" alt="Pesce tropicale 6" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://i.ibb.co/v4wnhjhD/7.png" alt="Pesce tropicale 7" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://i.ibb.co/PZWLTSqv/8.png" alt="Pesce tropicale 8" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://i.ibb.co/qYdgQ5Sc/9.png" alt="Pesce tropicale 9" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://i.ibb.co/PGvgNVmh/10.png" alt="Pesce tropicale 10" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://i.ibb.co/chWBshj0/11.png" alt="Pesce tropicale 11" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://i.ibb.co/hRQhFZd6/12.png" alt="Pesce tropicale 12" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://i.ibb.co/Wvc4Hb8X/13.png" alt="Pesce tropicale 13" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://i.ibb.co/9FHPBfn/14.png" alt="Pesce tropicale 14" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://i.ibb.co/gbMwg46H/15.png" alt="Pesce tropicale 15" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://i.ibb.co/d4b2dFfR/16.png" alt="Pesce tropicale 16" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';">
-                            </div>
-                            <!-- Duplicate images for seamless loop -->
-                            <div class="carousel-item">
-                                <img src="https://i.ibb.co/SDgJdwXv/1.png" alt="Pesce tropicale 1" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://i.ibb.co/tPDwTGcq/2.png" alt="Pesce tropicale 2" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="container">
-                <div style="width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); margin-top: 0.5cm; margin-bottom: 4rem; padding: 0; overflow: hidden;">
-                    <img src="https://i.postimg.cc/135TQgrw/lago-river-mo44nsters.png" alt="Lago River Monsters" style="width: 100%; height: auto; object-fit: cover; display: block;" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';" class="fade-in">
-                </div>
-                
-                <div class="section">
-                    
-                    <div class="highlight-text bounce-in">
-                        <h3 style="color: #1a1a1a;">La Nostra Filosofia</h3>
-                        <p><strong>Autofinanziamento attraverso la pesca Catch & Release:</strong> ogni ricavo viene completamente reinvestito nel lago e nel benessere dei nostri pesci tropicali. Crediamo in un modello sostenibile dove la passione per la pesca sportiva contribuisce direttamente alla conservazione e al miglioramento dell'habitat acquatico.</p>
-                    </div>
-                    
-                    <div style="width: 100%; height: 60vh; min-height: 400px; background-image: url('https://i.ibb.co/NcC1nqQ/558-Tropicale-selvaggio-unico.png'); background-size: cover; background-position: center; background-repeat: no-repeat; margin: 2rem 0;" class="rotate-in"></div>
-
-                    <div class="rules-box slide-up">
-                        <h3>Il Nostro Lago Wild</h3>
-                        <p>Il lago si estende su <strong>4.000 m²</strong> con uno stile completamente naturale: rive dolci che si alternano a sponde ripide, anse nascoste, buche profonde e rami caduti che creano rifugi perfetti per i pesci. Ninfee galleggianti, palme tropicali e fiori colorati completano questo ecosistema unico.</p>
-                        <p><strong>Il fiumiciattolo adiacente</strong> ospita predatori come lucci, amur, carpe, black bass e branzini, offrendo un'esperienza di pesca diversificata e emozionante.</p>
-                    </div>
-
-                    <div class="info-box bounce-in">
-                        <h3>Postazioni Attrezzate</h3>
-                        <p>Ogni postazione è dotata di <strong>tavolino, portabibita, posacenere e bidoncino</strong> per l'acqua. Su richiesta è possibile avere un ombrellone per le giornate più soleggiate. L'atmosfera tranquilla rende il lago ideale sia per pescatori esperti che per principianti.</p>
-                    </div>
-
-                    <div class="grid">
-                        <div class="card rotate-in">
-                            <img src="https://i.postimg.cc/HnWzM0MW/1.png" alt="Pesci Tropicali XL" class="fish-icon" style="width: 60px; height: 60px; object-fit: contain;" onerror="this.src=''; this.alt='Icona non disponibile'; this.style.display='none';">
-                            <h3>Pesci Tropicali XL</h3>
-                            <p>Carpe, amur, storioni e molte altre specie tropicali di grandi dimensioni per sfide indimenticabili.</p>
+                <div class="hero fade-in">
+                    <div class="hero-content">
+                        <h1 class="hero-title">TROPICALE,<br>SELVAGGIO,<br>UNICO.</h1>
+                        <div>
+                            <a href="#" onclick="showPage('fishing')" class="cta-button">Scopri le specie</a>
+                            <a href="https://wa.me/393484519244" class="cta-button">Prenota la tua giornata</a>
                         </div>
-
-                        <div class="card slide-up">
-                            <img src="https://i.postimg.cc/J7KPLgws/3.png" alt="Ambiente Naturale" class="fish-icon" style="width: 60px; height: 60px; object-fit: contain;" onerror="this.src=''; this.alt='Icona non disponibile'; this.style.display='none';">
-                            <h3>Ambiente Naturale</h3>
-                            <p>Lago immerso nel verde con rive naturali, boschi di querce e un'atmosfera tropicale unica.</p>
-                        </div>
-
-                        <div class="card bounce-in">
-                            <img src="https://i.postimg.cc/pX6C9FLx/5.png" alt="Attrezzature Complete" class="fish-icon" style="width: 60px; height: 60px; object-fit: contain;" onerror="this.src=''; this.alt='Icona non disponibile'; this.style.display='none';">
-                            <h3>Attrezzature Complete</h3>
-                            <p>Postazioni attrezzate con tavolini, portabibite, posacenere e tutto il necessario per una giornata perfetta.</p>
-                        </div>
-                    </div>
-
-                    <div class="warning-box rotate-in">
-                        <h3>Orari di Apertura</h3>
-                        <p><strong>Martedì - Domenica:</strong> dalle 8:00 alle 17:00</p>
-                        <p><strong>Chiuso il Lunedì</strong> per manutenzione e riposo dei pesci</p>
-                        <p><strong>Importante:</strong> le postazioni devono essere liberate entro le 16:50</p>
-                        <p><strong>Prenotazione consigliata</strong> per garantire la disponibilità</p>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Chi Siamo / Il Lago -->
-        <div id="about" class="page">
-            <div class="container">
+                <div class="fish-ticker">
+                    <div class="ticker-container">
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/SDgJdwXv/1.png" alt="Pesce tropicale 1" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/tPDwTGcq/2.png" alt="Pesce tropicale 2" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/SwcM43PD/3.png" alt="Pesce tropicale 3" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/2156Gs5n/4.png" alt="Pesce tropicale 4" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/rKNSDWfB/5.png" alt="Pesce tropicale 5" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/F4bJh4MX/6.png" alt="Pesce tropicale 6" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/v4wnhjhD/7.png" alt="Pesce tropicale 7" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/PZWLTSqv/8.png" alt="Pesce tropicale 8" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/qYdgQ5Sc/9.png" alt="Pesce tropicale 9" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/PGvgNVmh/10.png" alt="Pesce tropicale 10" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/chWBshj0/11.png" alt="Pesce tropicale 11" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/hRQhFZd6/12.png" alt="Pesce tropicale 12" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/Wvc4Hb8X/13.png" alt="Pesce tropicale 13" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/9FHPBfn/14.png" alt="Pesce tropicale 14" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/gbMwg46H/15.png" alt="Pesce tropicale 15" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/d4b2dFfR/16.png" alt="Pesce tropicale 16" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <!-- Duplicate for seamless loop -->
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/SDgJdwXv/1.png" alt="Pesce tropicale 1" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/tPDwTGcq/2.png" alt="Pesce tropicale 2" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/SwcM43PD/3.png" alt="Pesce tropicale 3" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/2156Gs5n/4.png" alt="Pesce tropicale 4" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/rKNSDWfB/5.png" alt="Pesce tropicale 5" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/F4bJh4MX/6.png" alt="Pesce tropicale 6" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/v4wnhjhD/7.png" alt="Pesce tropicale 7" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/PZWLTSqv/8.png" alt="Pesce tropicale 8" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/qYdgQ5Sc/9.png" alt="Pesce tropicale 9" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/PGvgNVmh/10.png" alt="Pesce tropicale 10" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/chWBshj0/11.png" alt="Pesce tropicale 11" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/hRQhFZd6/12.png" alt="Pesce tropicale 12" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/Wvc4Hb8X/13.png" alt="Pesce tropicale 13" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/9FHPBfn/14.png" alt="Pesce tropicale 14" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/gbMwg46H/15.png" alt="Pesce tropicale 15" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                        <div class="ticker-item">
+                            <img src="https://i.ibb.co/d4b2dFfR/16.png" alt="Pesce tropicale 16" onerror="this.src=''; this.alt='Immagine non disponibile';">
+                        </div>
+                    </div>
+                </div>
+
                 <div class="section">
-                    <h2 class="fade-in">Chi Siamo / Il Lago</h2>
+                    <h2 class="fade-in">I Nostri Due Laghi</h2>
                     
-                    <div class="tropical-box slide-in-left">
-                        <h3>La Storia di Angelo e Laura</h3>
-                        <p><strong>Siamo Angelo e Laura, fondatori e gestori del Lago River Monsters.</strong> La nostra passione per la pesca e l'amore per le specie tropicali XL ci hanno portato a creare questo paradiso acquatico dove ogni dettaglio è pensato per il benessere dei pesci e l'emozione dei pescatori.</p>
-                        <p>Da oltre <strong>5 anni</strong> ci dedichiamo con passione all'allevamento di pesci tropicali XL, sviluppando progetti di riproduzione innovativi e garantendo il massimo rispetto per ogni singola specie. La nostra esperienza ci ha permesso di creare un ecosistema perfetto per la crescita e il benessere dei nostri pesci.</p>
-                    </div>
-
-                    <div class="highlight-text fade-in">
-                        <h3 style="color: #1a1a1a; margin-bottom: 0.5rem;">Due Laghi Specializzati per Due Esperienze Uniche</h3>
-                        <p>La nostra struttura comprende <strong>due laghi distinti</strong>, ognuno progettato per offrire un'esperienza di pesca specifica e ottimale.</p>
-                    </div>
-
-                    <div class="two-lakes-container">
-                        <div class="lake-card slide-in-left">
-                            <img src="https://i.postimg.cc/7YXYx20N/8.png" alt="Lago Tropicali XL" class="lake-icon" style="width: 80px; height: 80px; object-fit: contain;" onerror="this.src=''; this.alt='Icona non disponibile'; this.style.display='none';">
-                            <h3 style="color: #FFD700; text-align: center;">LAGO TROPICALI XL</h3>
-                            <p><strong>4.000 m² di pura emozione</strong></p>
-                            <ul>
-                                <li>300+ pesci tropicali (30cm - 1m+)</li>
-                                <li>Carpe XL, Amur, Storioni tropicali</li>
-                                <li>Siluri giganti e Carassi XL</li>
-                                <li>Ambiente tropicale con palme</li>
-                                <li>Anse nascoste e buche profonde</li>
-                                <li>Catch & Release obbligatorio</li>
+                    <div class="lake-section">
+                        <div class="lake-card tropical-lake fade-in">
+                            <h3><img src="https://i.postimg.cc/hvLv8ZJF/8.png" alt="Tropicali" style="width: 40px; height: 40px; margin-right: 10px; vertical-align: middle;" onerror="this.style.display='none';"> Lago Tropicali</h3>
+                            <p class="lake-description">
+                                Il nostro lago principale dedicato esclusivamente alle <strong>specie tropicali</strong>. 
+                                Qui vivono Arapaima giganti, Gar alligatore, Pacu e altre specie esotiche uniche in Italia. 
+                                Un ambiente controllato e riscaldato per garantire il benessere di questi magnifici pesci.
+                            </p>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 0.5rem 0; color: #FFA500;">🐟 Arapaima fino a 80kg</li>
+                                <li style="padding: 0.5rem 0; color: #FFA500;">🦈 Gar alligatore combattivi</li>
+                                <li style="padding: 0.5rem 0; color: #FFA500;">🐠 Pacu giganti vegetariani</li>
+                                <li style="padding: 0.5rem 0; color: #FFA500;">🌡️ Ambiente riscaldato</li>
                             </ul>
                         </div>
-
-                        <div class="lake-card traditional slide-in-right">
-                            <img src="https://i.postimg.cc/1zV9c7TW/7.png" alt="Lago Tradizionale" class="lake-icon" style="width: 80px; height: 80px; object-fit: contain;" onerror="this.src=''; this.alt='Icona non disponibile'; this.style.display='none';">
-                            <h3 style="color: #1a3d2e; text-align: center;">LAGO TRADIZIONALE</h3>
-                            <p><strong>Pesca classica e rilassante</strong></p>
-                            <ul>
-                                <li>Storioni bianchi e siberiani</li>
-                                <li>Carpe comuni e specchio</li>
-                                <li>Trote iridea e fario</li>
-                                <li>Fiumiciattolo per predatori</li>
-                                <li>Lucci, Black Bass, Branzini</li>
-                                <li>Ideale per principianti</li>
+                        
+                        <div class="lake-card traditional-lake fade-in">
+                            <h3><img src="https://i.postimg.cc/1zV9c7TW/7.png" alt="Tradizionale" style="width: 40px; height: 40px; margin-right: 10px; vertical-align: middle;" onerror="this.style.display='none';"> Lago Tradizionale</h3>
+                            <p class="lake-description">
+                                Il lago dedicato alla <strong>pesca tradizionale</strong> con storioni, carpe comuni, 
+                                trote e predatori nostrani. Perfetto per famiglie, principianti e per chi ama 
+                                la pesca classica italiana in un ambiente naturale.
+                            </p>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 0.5rem 0; color: #1a3d2e;">🐟 Storioni fino a 15kg</li>
+                                <li style="padding: 0.5rem 0; color: #1a3d2e;">🎣 Carpe comuni e specchio</li>
+                                <li style="padding: 0.5rem 0; color: #1a3d2e;">🌊 Troutarea dedicata</li>
+                                <li style="padding: 0.5rem 0; color: #1a3d2e;">🏞️ Ambiente naturale</li>
                             </ul>
                         </div>
                     </div>
+                </div>
 
-                    <div class="open-content fade-in">
-                        <h3>Ambiente Naturale Condiviso</h3>
-                        <p>Entrambi i laghi sono immersi in un paesaggio mozzafiato con maestose querce che creano zone d'ombra naturale, mentre palme tropicali e fiori colorati arricchiscono l'atmosfera. Le rive dolci si alternano a sponde ripide, creando anse nascoste e rifugi perfetti per i pesci.</p>
-                    </div>
-
+                <div class="section">
+                    <h2 class="fade-in">Perché Scegliere River Monsters</h2>
+                    
                     <div class="grid">
                         <div class="card slide-in-left">
-                            <h3>Servizi e Strutture</h3>
-                            <p><strong>Area picnic</strong> con griglie per barbecue, <strong>chiosco</strong> con bibite fresche e snack. In futuro apriremo un ristorante e un B&B per completare l'esperienza. L'isolotto è raggiungibile tramite un comodo ponte.</p>
+                            <h3>🐠 Specie Uniche in Italia</h3>
+                            <p>L'unico lago dove pescare <strong>Arapaima giganti</strong>, <strong>Gar alligatore</strong>, <strong>Pacu</strong> e altre specie tropicali impossibili da trovare altrove.</p>
                         </div>
-
+                        
                         <div class="card slide-in-right">
-                            <h3>Fiumiciattolo per Spinning</h3>
-                            <p><strong>Una sfida in più per i pescatori!</strong> Il fiumiciattolo adiacente al lago ospita predatori come lucci, amur, carpe, black bass e branzini. Perfetto per lo spinning e per chi cerca un'esperienza di pesca diversificata.</p>
+                            <h3>🏆 Esperienza Garantita</h3>
+                            <p>Oltre <strong>15 anni di esperienza</strong> nell'allevamento di pesci tropicali. Pesci sani, forti e combattivi per un'esperienza indimenticabile.</p>
+                        </div>
+                        
+                        <div class="card slide-in-left">
+                            <h3>📍 Posizione Strategica</h3>
+                            <p>A soli <strong>30 km da Milano</strong> e <strong>25 km da Pavia</strong>. Facilmente raggiungibile dall'autostrada A4, uscita Marcallo-Mesero.</p>
+                        </div>
+                        
+                        <div class="card slide-in-right">
+                            <h3>🎯 Catch & Release</h3>
+                            <p>Pesca sportiva <strong>100% catch & release</strong> per preservare questi magnifici esemplari. Foto ricordo garantite!</p>
                         </div>
                     </div>
 
-                    <div class="rules-box scale-in">
-                        <h3>I Nostri Valori</h3>
-                        <ul>
-                            <li><strong>Rispetto per la fauna:</strong> Catch & Release obbligatorio</li>
-                            <li><strong>Sostenibilità:</strong> Gestione eco-compatibile dell'ambiente</li>
-                            <li><strong>Passione:</strong> Condivisione dell'amore per la pesca sportiva</li>
-                            <li><strong>Qualità:</strong> Servizi e strutture sempre al top</li>
+                    <div class="transparent-green-box scale-in">
+                        <h3>🌟 Esperienza Unica in Italia</h3>
+                        <p>Siamo l'unico centro in Italia specializzato nella pesca ai tropicali. I nostri pesci sono allevati con cura da oltre 15 anni e offrono combattimenti emozionanti in un ambiente controllato e sicuro.</p>
+                        <ul style="list-style: none; padding: 0; margin: 1rem 0;">
+                            <li style="padding: 0.5rem 0;">15 anni di esperienza nell'allevamento</li>
+                            <li style="padding: 0.5rem 0;">Specie uniche impossibili da trovare altrove</li>
+                            <li style="padding: 0.5rem 0;">Ambiente controllato e sicuro</li>
+                            <li style="padding: 0.5rem 0;">Staff esperto sempre disponibile</li>
                         </ul>
                     </div>
                 </div>
+
+                <div class="section">
+                    <h2 class="fade-in">La Nostra Storia</h2>
+                    
+                    <div class="transparent-green-box scale-in">
+                        <h3>🌟 Angelo e Laura: Una Passione Diventata Realtà</h3>
+                        <p>In parallelo all'attività di rescue di pesci tropicali XL che offriamo da anni (a nostre spese) e che continuiamo ad offrire, abbiamo pensato di autofinanziarci creando - con i tropicali allevati da noi o acquistati - un lago di pesca sportiva C&R.</p>
+                        
+                        <p>Ovviamente i tropicali sono presenti solo nella bella stagione, causa temperature. Teniamo a precisare che le specie pescabili sono robuste rispetto ai classici pesci da fiume; ed abbiamo evitato di proposito le specie più delicate o stressabili.</p>
+                        
+                        <p>Vi è inoltre un preciso regolamento ed un controllo ferreo atto ad evitare qualsiasi spiacevole inconveniente o lungaggine della cattura e rilascio. Sono pur sempre animali allevati da noi sin da piccoli e con un certo valore; quindi va da sè che ci teniamo parecchio.</p>
+                        
+                        <p>Né gli adulti né gli eventuali avannotti hanno modo di entrare in acque libere.</p>
+                    </div>
+
+                    <div class="card slide-in-left">
+                        <h3>🐟 Varietà per Tutti i Gusti</h3>
+                        <p>Sono presenti anche specie comunemente presenti nei nostri fiumi e laghetti sportivi, pescabili tutto l'anno: storioni, persici, black bass, striped bass, carpe, lucci, amur, perca ecc.</p>
+                        
+                        <p><strong>In questo modo avete quindi l'occasione di aiutarci divertendovi, senza dover prendere l'aereo per paesi esotici.</strong></p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Pesca Tropicali -->
+        <!-- Fishing Page -->
         <div id="fishing" class="page">
             <div class="container">
                 <div class="section">
-                    <div class="fishing-type-header tropical-header fade-in">
-                        <h2>PESCA AI TROPICALI XL</h2>
-                        <p>Disponibile solo nella bella stagione - Specie robuste e resistenti</p>
-                    </div>
                     
-                    <p class="slide-in-left"><strong>🌡️ Stagionalità e Selezione delle Specie</strong><br>
-                    I pesci tropicali sono disponibili esclusivamente durante la bella stagione a causa delle temperature. Abbiamo accuratamente selezionato solo specie robuste e resistenti, evitando deliberatamente quelle più delicate o facilmente stressabili.<br><br>
-                    Il nostro lago ospita una straordinaria varietà di pesci tropicali di grandi dimensioni, allevati da noi sin da piccoli e accuratamente selezionati per la loro resistenza e per offrire sfide emozionanti a pescatori di ogni livello.<br><br>
-                    <strong>Le Nostre Specie Tropicali Esotiche</strong><br>
-                    Una collezione unica di pesci tropicali provenienti da tutto il mondo, allevati con cura e selezionati per la loro resistenza. Ogni specie offre un'esperienza di pesca diversa e indimenticabile.</p>
-
-
+                    <!-- GRANDE BOX PESCA TROPICALI -->
+                    <div class="mega-fishing-box tropical-mega-box fade-in">
+                        <div class="mega-box-header">
+                            <h2>🐠 PESCA AI TROPICALI</h2>
+                            <p>Specie esotiche uniche in Italia - Solo bella stagione</p>
+                        </div>
 
                     <!-- AMAZZONIA -->
-                    <div class="fishing-type-header" style="background: linear-gradient(135deg, #228B22 0%, #006400 100%); color: white; margin: 3rem 0 2rem 0; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: url('https://i.postimg.cc/tCgbddrn/2.png'); background-repeat: no-repeat; background-size: cover; background-position: center; opacity: 0.2;"></div>
-                        <h2 style="color: white; position: relative; z-index: 2;">AMAZZONIA</h2>
-                        <p style="color: #90EE90; position: relative; z-index: 2;">Specie dal bacino amazzonico</p>
+                    <div class="fishing-type-header" style="background: linear-gradient(135deg, rgba(26, 61, 46, 0.8) 0%, rgba(45, 90, 61, 0.8) 100%), url('https://i.postimg.cc/tCgbddrn/2.png'); background-size: cover; background-position: center; color: white; margin: 3rem 0 2rem 0;">
+                        <h2 style="color: #FFD700;">AMAZZONIA</h2>
+                        <p style="color: #E0FFE0;">Giganti dell'Amazzonia e dei fiumi tropicali</p>
                     </div>
-                    <div class="species-grid">
-                        <div class="species-item">
-                            <img src="https://i.ibb.co/SDgJdwXv/1.png" alt="Specie amazzonica 1" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';" class="fade-in">
-                        </div>
-                        <div class="species-item">
-                            <img src="https://i.ibb.co/2156Gs5n/4.png" alt="Specie amazzonica 4" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';" class="fade-in">
-                        </div>
-                        <div class="species-item">
-                            <img src="https://i.ibb.co/F4bJh4MX/6.png" alt="Specie amazzonica 6" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';" class="fade-in">
-                        </div>
-                        <div class="species-item">
-                            <img src="https://i.ibb.co/v4wnhjhD/7.png" alt="Specie amazzonica 7" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';" class="fade-in">
-                        </div>
-                        <div class="species-item">
-                            <img src="https://i.ibb.co/PGvgNVmh/10.png" alt="Specie amazzonica 10" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';" class="fade-in">
-                        </div>
-                        <div class="species-item">
-                            <img src="https://i.ibb.co/chWBshj0/11.png" alt="Specie amazzonica 11" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';" class="fade-in">
-                        </div>
-                        <div class="species-item">
-                            <img src="https://i.ibb.co/hRQhFZd6/12.png" alt="Specie amazzonica 12" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';" class="fade-in">
-                        </div>
-                        <div class="species-item">
-                            <img src="https://i.ibb.co/Wvc4Hb8X/13.png" alt="Specie amazzonica 13" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';" class="fade-in">
-                        </div>
+
+                    <div class="fish-images-grid">
+                        <img src="https://i.ibb.co/SDgJdwXv/1.png" alt="Pesce Amazzonico" class="fish-image-item fade-in" onerror="this.style.display='none';">
+                        <img src="https://i.ibb.co/2156Gs5n/4.png" alt="Pesce Amazzonico" class="fish-image-item fade-in" onerror="this.style.display='none';">
+                        <img src="https://i.ibb.co/F4bJh4MX/6.png" alt="Pesce Amazzonico" class="fish-image-item fade-in" onerror="this.style.display='none';">
+                        <img src="https://i.ibb.co/v4wnhjhD/7.png" alt="Pesce Amazzonico" class="fish-image-item fade-in" onerror="this.style.display='none';">
+                        <img src="https://i.ibb.co/PGvgNVmh/10.png" alt="Pesce Amazzonico" class="fish-image-item fade-in" onerror="this.style.display='none';">
+                        <img src="https://i.ibb.co/chWBshj0/11.png" alt="Pesce Amazzonico" class="fish-image-item fade-in" onerror="this.style.display='none';">
+                        <img src="https://i.ibb.co/hRQhFZd6/12.png" alt="Pesce Amazzonico" class="fish-image-item fade-in" onerror="this.style.display='none';">
+                        <img src="https://i.ibb.co/Wvc4Hb8X/13.png" alt="Pesce Amazzonico" class="fish-image-item fade-in" onerror="this.style.display='none';">
                     </div>
 
                     <!-- FLORIDA/TEXAS/LOUISIANA -->
-                    <div class="fishing-type-header" style="background: linear-gradient(135deg, #FF6347 0%, #DC143C 100%); color: white; margin: 3rem 0 2rem 0; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: url('https://i.postimg.cc/sgZtKT5x/5.png'); background-repeat: no-repeat; background-size: cover; background-position: center; opacity: 0.2;"></div>
-                        <h2 style="color: white; position: relative; z-index: 2;">FLORIDA/TEXAS/LOUISIANA</h2>
-                        <p style="color: #FFB6C1; position: relative; z-index: 2;">Specie del sud degli Stati Uniti</p>
+                    <div class="fishing-type-header" style="background: linear-gradient(135deg, rgba(26, 61, 46, 0.8) 0%, rgba(45, 90, 61, 0.8) 100%), url('https://i.postimg.cc/sgZtKT5x/5.png'); background-size: cover; background-position: center; color: white; margin: 3rem 0 2rem 0;">
+                        <h2 style="color: #FFD700;">FLORIDA/TEXAS/LOUISIANA</h2>
+                        <p style="color: #E0FFE0;">Predatori del Sud degli Stati Uniti</p>
                     </div>
-                    <div class="species-grid">
-                        <div class="species-item">
-                            <img src="https://i.ibb.co/tPDwTGcq/2.png" alt="Specie americana 2" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';" class="fade-in">
-                        </div>
-                        <div class="species-item">
-                            <img src="https://i.ibb.co/SwcM43PD/3.png" alt="Specie americana 3" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';" class="fade-in">
-                        </div>
-                        <div class="species-item">
-                            <img src="https://i.ibb.co/qYdgQ5Sc/9.png" alt="Specie americana 9" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';" class="fade-in">
-                        </div>
+
+                    <div class="fish-images-grid">
+                        <img src="https://i.ibb.co/tPDwTGcq/2.png" alt="Pesce Americano" class="fish-image-item fade-in" onerror="this.style.display='none';">
+                        <img src="https://i.ibb.co/SwcM43PD/3.png" alt="Pesce Americano" class="fish-image-item fade-in" onerror="this.style.display='none';">
+                        <img src="https://i.ibb.co/qYdgQ5Sc/9.png" alt="Pesce Americano" class="fish-image-item fade-in" onerror="this.style.display='none';">
                     </div>
 
                     <!-- ASIA -->
-                    <div class="fishing-type-header" style="background: linear-gradient(135deg, #FF8C00 0%, #FF4500 100%); color: white; margin: 3rem 0 2rem 0; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: url('https://i.postimg.cc/pTdCcd3C/4.png'); background-repeat: no-repeat; background-size: cover; background-position: center; opacity: 0.2;"></div>
-                        <h2 style="color: white; position: relative; z-index: 2;">ASIA</h2>
-                        <p style="color: #FFDAB9; position: relative; z-index: 2;">Specie asiatiche</p>
+                    <div class="fishing-type-header" style="background: linear-gradient(135deg, rgba(26, 61, 46, 0.8) 0%, rgba(45, 90, 61, 0.8) 100%), url('https://i.postimg.cc/pTdCcd3C/4.png'); background-size: cover; background-position: center; color: white; margin: 3rem 0 2rem 0;">
+                        <h2 style="color: #FFD700;">ASIA</h2>
+                        <p style="color: #E0FFE0;">Giganti dei fiumi e laghi orientali</p>
                     </div>
-                    <div class="species-grid">
-                        <div class="species-item">
-                            <img src="https://i.ibb.co/rKNSDWfB/5.png" alt="Specie asiatica 5" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';" class="fade-in">
-                        </div>
-                        <div class="species-item">
-                            <img src="https://i.ibb.co/9FHPBfn/14.png" alt="Specie asiatica 14" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';" class="fade-in">
-                        </div>
-                        <div class="species-item">
-                            <img src="https://i.ibb.co/gbMwg46H/15.png" alt="Specie asiatica 15" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';" class="fade-in">
-                        </div>
+
+                    <div class="fish-images-grid">
+                        <img src="https://i.ibb.co/rKNSDWfB/5.png" alt="Pesce Asiatico" class="fish-image-item fade-in" onerror="this.style.display='none';">
+                        <img src="https://i.ibb.co/9FHPBfn/14.png" alt="Pesce Asiatico" class="fish-image-item fade-in" onerror="this.style.display='none';">
+                        <img src="https://i.ibb.co/gbMwg46H/15.png" alt="Pesce Asiatico" class="fish-image-item fade-in" onerror="this.style.display='none';">
                     </div>
 
                     <!-- AFRICA -->
-                    <div class="fishing-type-header" style="background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%); color: white; margin: 3rem 0 2rem 0; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: url('https://i.postimg.cc/DZgVLmLc/3.png'); background-repeat: no-repeat; background-size: cover; background-position: center; opacity: 0.2;"></div>
-                        <h2 style="color: white; position: relative; z-index: 2;">AFRICA</h2>
-                        <p style="color: #DEB887; position: relative; z-index: 2;">Specie africane</p>
-                    </div>
-                    <div class="species-grid">
-                        <div class="species-item">
-                            <img src="https://i.ibb.co/PZWLTSqv/8.png" alt="Specie africana 8" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';" class="fade-in">
-                        </div>
-                        <div class="species-item">
-                            <img src="https://i.ibb.co/d4b2dFfR/16.png" alt="Specie africana 16" onerror="this.src=''; this.alt='Immagine non disponibile'; this.style.display='none';" class="fade-in">
-                        </div>
+                    <div class="fishing-type-header" style="background: linear-gradient(135deg, rgba(26, 61, 46, 0.8) 0%, rgba(45, 90, 61, 0.8) 100%), url('https://i.postimg.cc/DZgVLmLc/3.png'); background-size: cover; background-position: center; color: white; margin: 3rem 0 2rem 0;">
+                        <h2 style="color: #FFD700;">AFRICA</h2>
+                        <p style="color: #E0FFE0;">Predatori dei grandi fiumi africani</p>
                     </div>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 3rem 0;">
-                        <div class="rules-box slide-in-left" style="background: linear-gradient(135deg, #E8F8F5 0%, #D5F4E6 100%); border-left-color: #27AE60;">
-                            <h3 style="color: #27AE60;">Attrezzatura Obbligatoria</h3>
+                    <div class="fish-images-grid">
+                        <img src="https://i.ibb.co/PZWLTSqv/8.png" alt="Pesce Africano" class="fish-image-item fade-in" onerror="this.style.display='none';">
+                        <img src="https://i.ibb.co/d4b2dFfR/16.png" alt="Pesce Africano" class="fish-image-item fade-in" onerror="this.style.display='none';">
+                    </div>
+
+                        <div class="tropical-box slide-in-left">
+                            <h3>🎯 Regole Pesca Tropicali</h3>
                             <ul>
-                                <li><strong>Guadino gommato</strong> per la sicurezza dei pesci</li>
-                                <li><strong>Monofilo 0,50 mm</strong> o treccia 30 lb minimo</li>
-                                <li><strong>Cavetto d'acciaio</strong> per predatori</li>
-                                <li><strong>Ami barbless</strong> o con ardiglione schiacciato</li>
-                                <li><strong>Materassino</strong> per la manipolazione</li>
-                                <li><strong>Pinze lunghe</strong> per slamatura sicura</li>
-                                <li><strong>Piombi a perdere</strong> per evitare incidenti</li>
-                                <li><strong>Massimo 2 canne</strong> per pescatore</li>
+                                <li><strong>Catch & Release obbligatorio</strong> - Tutti i pesci devono essere rilasciati</li>
+                                <li><strong>Max 2 canne</strong> per pescatore</li>
+                                <li><strong>Materassino obbligatorio</strong> per la sicurezza dei pesci</li>
+                                <li><strong>Mani sempre bagnate</strong> quando si tocca il pesce</li>
+                                <li><strong>Foto rapide</strong> e rilascio immediato</li>
+                                <li><strong>Vietati:</strong> ardiglione, treccia, pop-up</li>
+                                <li><strong>Ami massimo 4.0</strong> per evitare danni</li>
                             </ul>
                         </div>
 
-                        <div class="tropical-box slide-in-right" style="background: linear-gradient(135deg, #FFFFC4 0%, #FFFF99 100%); border-left-color: #FFFF00;">
-                            <h3 style="color: #B8860B;">Divieti Assoluti</h3>
-                            <ul>
-                                <li><strong>Ami con ardiglione</strong> non schiacciato</li>
-                                <li><strong>Doppi ami e ancorette</strong></li>
-                                <li><strong>Boga grip</strong> per sollevare i pesci</li>
-                                <li><strong>Sollevare pesci oltre 30 cm</strong> dal suolo</li>
-                                <li><strong>Guanti o stracci</strong> per toccare i pesci</li>
-                                <li><strong>Disturbare altri pescatori</strong></li>
-                            </ul>
+                        <div class="tropical-box slide-in-right">
+                            <h3>Esche Consigliate</h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 1.5rem 0;">
+                                <div>
+                                    <h4 style="color: #1a3d2e; margin-bottom: 1rem; font-weight: 600;">Esche Naturali</h4>
+                                    <ul style="list-style: none; padding: 0;">
+                                        <li style="padding: 0.3rem 0; color: #1a3d2e;">Boiles proteiche 20-24mm</li>
+                                        <li style="padding: 0.3rem 0; color: #1a3d2e;">Pellets affondanti 6-12mm</li>
+                                        <li style="padding: 0.3rem 0; color: #1a3d2e;">Mais dolce in scatola</li>
+                                        <li style="padding: 0.3rem 0; color: #1a3d2e;">Pesce morto (alborelle, sardine)</li>
+                                        <li style="padding: 0.3rem 0; color: #1a3d2e;">Lombrichi grossi</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 style="color: #1a3d2e; margin-bottom: 1rem; font-weight: 600;">Tecniche di Pesca</h4>
+                                    <ul style="list-style: none; padding: 0;">
+                                        <li style="padding: 0.3rem 0; color: #1a3d2e;">Method feeder con boiles</li>
+                                        <li style="padding: 0.3rem 0; color: #1a3d2e;">Carpfishing tradizionale</li>
+                                        <li style="padding: 0.3rem 0; color: #1a3d2e;">Pesca a fondo con pesce morto</li>
+                                        <li style="padding: 0.3rem 0; color: #1a3d2e;">Pasturazione con spomb/rocket</li>
+                                        <li style="padding: 0.3rem 0; color: #1a3d2e;">Presentazioni bilanciate</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="highlight-text fade-in">
+                            <h3 style="color: #1a1a1a; margin-bottom: 0.5rem;">Pasturazione Consentita</h3>
+                            <p><strong>Pastura illimitata</strong> con boiles, pellets, pesce morto. Strumenti consentiti: PVA, rocket, spomb, cucchiaione, fionda, cobra.</p>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 3rem 0;">
+                            <div class="warning-box scale-in">
+                                <h3>I Nostri Pesci: Valore e Cura</h3>
+                                <p><strong>Sono animali allevati da noi sin da piccoli</strong> e hanno un certo valore economico ed affettivo. Per questo motivo ci teniamo parecchio al loro benessere e abbiamo implementato:</p>
+                                <ul>
+                                    <li><strong>Regolamento preciso</strong> per ogni fase della pesca</li>
+                                    <li><strong>Controllo ferreo</strong> per evitare spiacevoli inconvenienti</li>
+                                    <li><strong>Procedure rapide</strong> per cattura e rilascio</li>
+                                    <li><strong>Supervisione costante</strong> delle attività</li>
+                                </ul>
+                            </div>
+
+                            <div class="tropical-box fade-in" style="border: 4px solid #1a3d2e; border-left: 8px solid #1a3d2e; box-shadow: 0 4px 20px rgba(26, 61, 46, 0.3); background: linear-gradient(135deg, #FFF9C4 0%, #FFE082 100%);">
+                                <h3 style="color: #1a3d2e; font-weight: 700;">⚠️ SANZIONI PER NEGLIGENZA</h3>
+                                <ul>
+                                    <li><strong style="color: #1a3d2e;">Pesci comuni:</strong> 50 €/kg</li>
+                                    <li><strong style="color: #1a3d2e;">Pesci tropicali:</strong> 200 €/kg</li>
+                                </ul>
+                                <p><strong style="color: #1a3d2e;">Raccomandazioni:</strong> mani sempre bagnate, rilascio rapido, massimo rispetto del pesce.</p>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Sezione Esche Consigliate -->
-                    <div class="fishing-type-header" style="background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%); color: white; margin: 3rem 0 2rem 0;">
-                        <h2 style="color: white;">🎣 ESCHE CONSIGLIATE PER TROPICALI</h2>
-                        <p style="color: #FFE4B5;">Scegli l'esca giusta per ogni specie</p>
-                    </div>
+                    <!-- GRANDE BOX PESCA TRADIZIONALE -->
+                    <div class="mega-fishing-box traditional-mega-box fade-in">
+                        <div class="mega-box-header">
+                            <h2>🎣 PESCA TRADIZIONALE</h2>
+                            <p>Storioni, carpe e pesci tradizionali per tutti i livelli</p>
+                        </div>
 
-                    <div class="grid">
-                        <div class="card tropical-card fade-in">
-                            <h3>🐟 Pesce Morto o Vivo</h3>
-                            <p><strong>Sardine, alici, cefali</strong></p>
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin: 2rem 0;">
+                            <div class="card traditional-card fade-in">
+                                <h3>Storioni</h3>
+                                <p>Esemplari di storione bianco e siberiano fino a 15 kg. Pesca tecnica e combattimenti emozionanti.</p>
+                            </div>
+
+                            <div class="card traditional-card fade-in">
+                                <h3>Carpe Comuni</h3>
+                                <p>Carpe comuni e specchio da 5 a 20 kg. Ideali per carpfishing tradizionale e per principianti.</p>
+                            </div>
+
+                            <div class="card traditional-card fade-in">
+                                <h3>Trote</h3>
+                                <p>Trote iridea e fario nella zona dedicata. Pesca a spinning, mosca o con esche naturali.</p>
+                            </div>
+
+                            <div class="card traditional-card fade-in">
+                                <h3>Predatori</h3>
+                                <p>Lucci, black bass, branzini nel fiumiciattolo. Spinning e pesca con esche vive consentite.</p>
+                            </div>
+                        </div>
+
+                        <div class="open-content slide-in-left">
+                            <h3>Regole Storioni/Carpe</h3>
                             <ul>
-                                <li><strong>Ideale per:</strong> Arapaima, Gar, Catfish tropicali</li>
-                                <li><strong>Montatura:</strong> Ami robusti 2/0-6/0</li>
-                                <li><strong>Tecnica:</strong> Pesca a fondo o a galla</li>
-                                <li><strong>Consiglio:</strong> Pesce fresco per migliori risultati</li>
+                                <li><strong>Max 2 canne</strong> per pescatore</li>
+                                <li><strong>Materassino obbligatorio</strong></li>
+                                <li><strong>Vietati:</strong> ardiglione, treccia, pop-up, ami >4.0</li>
+                                <li><strong>Pastura consentita</strong></li>
+                                <li><strong>Corde spesse</strong> per storioni grandi</li>
+                                <li><strong>Massima cura</strong> durante foto e rilascio</li>
                             </ul>
                         </div>
 
-                        <div class="card tropical-card fade-in">
-                            <h3>🔴 Boilies e Pellets</h3>
-                            <p><strong>Proteici ad alto valore</strong></p>
+                        <div class="traditional-box slide-in-right">
+                            <h3>🎯 Regole Predatori</h3>
                             <ul>
-                                <li><strong>Ideale per:</strong> Pacu, carpe, onnivori</li>
-                                <li><strong>Diametro:</strong> 20-24mm per boilies</li>
-                                <li><strong>Sapori:</strong> Pesce, carne, frutta</li>
-                                <li><strong>Tecnica:</strong> Hair rig o diretto</li>
+                                <li><strong>Tutti gli stili</strong> di pesca consentiti</li>
+                                <li><strong>Cavetto 1 mm+</strong> obbligatorio</li>
+                                <li><strong>Vietati:</strong> ardiglione, ancorette, boga, guanti</li>
+                                <li><strong>Doppio amo</strong> consentito</li>
+                                <li><strong>Guadino lungo</strong> raccomandato</li>
                             </ul>
                         </div>
 
-                        <div class="card tropical-card fade-in">
-                            <h3>🍌 Carne e Frutta</h3>
-                            <p><strong>Polpette, banana, mango</strong></p>
-                            <ul>
-                                <li><strong>Ideale per:</strong> Pacu (adorano la frutta!)</li>
-                                <li><strong>Preparazione:</strong> Pezzi di 3-5 cm</li>
-                                <li><strong>Frutta tropicale:</strong> Banana, mango, papaya</li>
-                                <li><strong>Carne:</strong> Polpette, fegato, cuore</li>
-                            </ul>
+                        <div class="highlight-text fade-in">
+                            <h3 style="color: #1a1a1a; margin-bottom: 0.5rem;">🌊 Regole Troutarea</h3>
+                            <p style="color: #1a1a1a;"><strong>Solo esche rigide consentite</strong> • <strong>Retino in gomma obbligatorio</strong> • <strong>Vietato toccare le trote con le mani</strong> • <strong>No ardiglione/ancorette</strong> • <strong>Pesca a mosca su prenotazione</strong></p>
                         </div>
-
-                        <div class="card tropical-card fade-in">
-                            <h3>🎣 Artificiali Spinning</h3>
-                            <p><strong>Jerkbait, swimbait, cucchiaini</strong></p>
-                            <ul>
-                                <li><strong>Ideale per:</strong> Gar, Persici tropicali, Black bass</li>
-                                <li><strong>Dimensioni:</strong> 10-20 cm per swimbait</li>
-                                <li><strong>Colori:</strong> Naturali o accesi</li>
-                                <li><strong>Azione:</strong> Recupero irregolare</li>
-                            </ul>
-                        </div>
-
-                        <div class="card tropical-card fade-in">
-                            <h3>🪱 Esche Naturali</h3>
-                            <p><strong>Lombrichi, vermi, interiora</strong></p>
-                            <ul>
-                                <li><strong>Ideale per:</strong> Catfish, predatori di fondo</li>
-                                <li><strong>Dimensioni:</strong> Grosse esche naturali</li>
-                                <li><strong>Preparazione:</strong> Fegato, cuore di pollo</li>
-                                <li><strong>Montatura:</strong> Piombo scorrevole</li>
-                            </ul>
-                        </div>
-
-                        <div class="card tropical-card fade-in">
-                            <h3>💡 Consigli Generali</h3>
-                            <p><strong>Suggerimenti per il successo</strong></p>
-                            <ul>
-                                <li><strong>Varietà:</strong> Porta diverse tipologie</li>
-                                <li><strong>Freschezza:</strong> Esche sempre fresche</li>
-                                <li><strong>Dimensioni:</strong> Esche grandi per pesci grandi</li>
-                                <li><strong>Pazienza:</strong> I tropicali sono selettivi</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="highlight-text fade-in">
-                        <h3 style="color: #1a1a1a; margin-bottom: 0.5rem;">Pasturazione Consentita</h3>
-                        <p><strong>Pastura illimitata</strong> con boiles, pellets, pesce morto. Strumenti consentiti: PVA, rocket, spomb, cucchiaione, fionda, cobra.</p>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 3rem 0;">
-                        <div class="warning-box scale-in">
-                            <h3>I Nostri Pesci: Valore e Cura</h3>
-                            <p><strong>Sono animali allevati da noi sin da piccoli</strong> e hanno un certo valore economico ed affettivo. Per questo motivo ci teniamo parecchio al loro benessere e abbiamo implementato:</p>
-                            <ul>
-                                <li><strong>Regolamento preciso</strong> per ogni fase della pesca</li>
-                                <li><strong>Controllo ferreo</strong> per evitare spiacevoli inconvenienti</li>
-                                <li><strong>Procedure rapide</strong> per cattura e rilascio</li>
-                                <li><strong>Supervisione costante</strong> delle attività</li>
-                            </ul>
-                        </div>
-
-                        <div class="tropical-box fade-in" style="border: 4px solid #FF0000; border-left: 8px solid #FF0000; box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3); background: linear-gradient(135deg, #FFE4E1 0%, #FFCCCB 100%);">
-                            <h3 style="color: #CC0000; font-weight: 700;">⚠️ SANZIONI PER NEGLIGENZA</h3>
-                            <ul>
-                                <li><strong style="color: #CC0000;">Pesci comuni:</strong> 50 €/kg</li>
-                                <li><strong style="color: #CC0000;">Pesci tropicali:</strong> 200 €/kg</li>
-                            </ul>
-                            <p><strong style="color: #CC0000;">Raccomandazioni:</strong> mani sempre bagnate, rilascio rapido, massimo rispetto del pesce.</p>
-                        </div>
-                    </div>
-
-                    <!-- Sezione Pesca Tradizionale -->
-                    <div class="fishing-type-header traditional-header fade-in">
-                        <h2>PESCA TRADIZIONALE</h2>
-                        <p>Storioni, carpe e pesci tradizionali per tutti i livelli</p>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin: 2rem 0;">
-                        <div class="card traditional-card fade-in">
-                            <svg class="fish-icon" viewBox="0 0 100 60" fill="#1a3d2e">
-                                <ellipse cx="50" cy="30" rx="32" ry="15"/>
-                                <polygon points="18,30 8,22 8,38" fill="#1a3d2e"/>
-                                <circle cx="62" cy="26" r="3" fill="white"/>
-                                <path d="M72,18 Q88,30 72,42" stroke="#0d2818" stroke-width="2" fill="none"/>
-                            </svg>
-                            <h3>Storioni</h3>
-                            <p>Esemplari di storione bianco e siberiano fino a 15 kg. Pesca tecnica e combattimenti emozionanti.</p>
-                        </div>
-
-                        <div class="card traditional-card fade-in">
-                            <svg class="fish-icon" viewBox="0 0 100 60" fill="#27AE60">
-                                <ellipse cx="50" cy="30" rx="28" ry="16"/>
-                                <polygon points="22,30 10,24 10,36" fill="#27AE60"/>
-                                <circle cx="58" cy="26" r="3" fill="white"/>
-                                <path d="M68,20 Q82,30 68,40" stroke="#229954" stroke-width="2" fill="none"/>
-                            </svg>
-                            <h3>Carpe Comuni</h3>
-                            <p>Carpe comuni e specchio da 5 a 20 kg. Ideali per carpfishing tradizionale e per principianti.</p>
-                        </div>
-
-                        <div class="card traditional-card fade-in">
-                            <svg class="fish-icon" viewBox="0 0 100 60" fill="#E67E22">
-                                <ellipse cx="50" cy="30" rx="25" ry="12"/>
-                                <polygon points="25,30 15,26 15,34" fill="#E67E22"/>
-                                <circle cx="55" cy="27" r="2" fill="white"/>
-                                <path d="M65,23 Q75,30 65,37" stroke="#D35400" stroke-width="2" fill="none"/>
-                            </svg>
-                            <h3>Trote</h3>
-                            <p>Trote iridea e fario nella zona dedicata. Pesca a spinning, mosca o con esche naturali.</p>
-                        </div>
-
-                        <div class="card traditional-card fade-in">
-                            <svg class="fish-icon" viewBox="0 0 100 60" fill="#8E44AD">
-                                <ellipse cx="50" cy="30" rx="30" ry="14"/>
-                                <polygon points="20,30 10,26 10,34" fill="#8E44AD"/>
-                                <circle cx="60" cy="27" r="3" fill="white"/>
-                                <path d="M70,22 Q85,30 70,38" stroke="#9B59B6" stroke-width="2" fill="none"/>
-                            </svg>
-                            <h3>Predatori</h3>
-                            <p>Lucci, black bass, branzini nel fiumiciattolo. Spinning e pesca con esche vive consentite.</p>
-                        </div>
-                    </div>
-
-                    <div class="open-content slide-in-left">
-                        <h3>Regole Storioni/Carpe</h3>
-                        <ul>
-                            <li><strong>Max 2 canne</strong> per pescatore</li>
-                            <li><strong>Materassino obbligatorio</strong></li>
-                            <li><strong>Vietati:</strong> ardiglione, treccia, pop-up, ami >4.0</li>
-                            <li><strong>Pastura consentita</strong></li>
-                            <li><strong>Corde spesse</strong> per storioni grandi</li>
-                            <li><strong>Massima cura</strong> durante foto e rilascio</li>
-                        </ul>
-                    </div>
-
-                    <div class="traditional-box slide-in-right">
-                        <h3>🎯 Regole Predatori</h3>
-                        <ul>
-                            <li><strong>Tutti gli stili</strong> di pesca consentiti</li>
-                            <li><strong>Cavetto 1 mm+</strong> obbligatorio</li>
-                            <li><strong>Vietati:</strong> ardiglione, ancorette, boga, guanti</li>
-                            <li><strong>Doppio amo</strong> consentito</li>
-                            <li><strong>Guadino lungo</strong> raccomandato</li>
-                        </ul>
-                    </div>
-
-                    <div class="highlight-text fade-in">
-                        <h3 style="color: #1a1a1a; margin-bottom: 0.5rem;">🌊 Regole Troutarea</h3>
-                        <p style="color: #1a1a1a;"><strong>Solo esche rigide</strong> consentite - <strong>Retino in gomma</strong> obbligatorio - <strong>Vietato toccare le trote</strong> con le mani - <strong>No ardiglione/ancorette</strong> - <strong>Pesca a mosca</strong> su prenotazione</p>
                     </div>
                 </div>
             </div>
@@ -1999,8 +1845,6 @@
         <div id="prices" class="page">
             <div class="container">
                 <div class="section">
-                    <h2 class="fade-in">Tariffe</h2>
-                    
                     <div class="fishing-type-header tropical-header fade-in">
                         <h2>🐠 TARIFFE PESCA TROPICALI</h2>
                         <p>Solo bella stagione - Specie robuste allevate da noi</p>
@@ -2011,80 +1855,77 @@
                         <p>Obbligatoria per tutti i pescatori, inclusa in tutte le tariffe tropicali</p>
                     </div>
 
-                    <div class="grid">
+                    <div class="tariff-grid">
                         <div class="card tropical-card fade-in">
-                            <h3>🌅 Giornaliera Intera</h3>
+                            <h3>Giornaliera Intera</h3>
                             <div class="price-tag">€80,00</div>
                             <p><strong>8:00-17:00 (Mar-Dom)</strong></p>
                             <ul>
-                                <li>Accesso completo al lago tropicali</li>
-                                <li>Postazione attrezzata</li>
-                                <li>Tessera ARCIPESCA inclusa</li>
-                                <li>Catch & Release obbligatorio</li>
+                                <li>• Accesso completo al lago tropicali</li>
+                                <li>• Postazione attrezzata</li>
+                                <li>• Tessera ARCIPESCA inclusa</li>
+                                <li>• Catch & Release obbligatorio</li>
                             </ul>
                         </div>
 
                         <div class="card tropical-card fade-in">
-                            <h3>🌤️ Mezza Giornata</h3>
+                            <h3>Mezza Giornata</h3>
                             <div class="price-tag">€50,00</div>
                             <p><strong>8:00-12:30 o 12:30-17:00</strong></p>
                             <ul>
-                                <li>4,5 ore di pesca</li>
-                                <li>Postazione attrezzata</li>
-                                <li>Tessera ARCIPESCA inclusa</li>
-                                <li>Ideale per principianti</li>
+                                <li>• 4,5 ore di pesca</li>
+                                <li>• Postazione attrezzata</li>
+                                <li>• Tessera ARCIPESCA inclusa</li>
+                                <li>• Ideale per principianti</li>
                             </ul>
                         </div>
 
                         <div class="card tropical-card fade-in">
-                            <h3>👥 Gruppi 3+ Persone</h3>
+                            <h3>Gruppi 3+ Persone</h3>
                             <div class="price-tag">€60,00 cad.</div>
                             <p><strong>Sconto per gruppi</strong></p>
                             <ul>
-                                <li>Minimo 3 pescatori</li>
-                                <li>Giornata intera</li>
-                                <li>Area dedicata</li>
-                                <li>Prenotazione obbligatoria</li>
+                                <li>• Minimo 3 pescatori</li>
+                                <li>• Giornata intera</li>
+                                <li>• Area dedicata</li>
+                                <li>• Prenotazione obbligatoria</li>
                             </ul>
                         </div>
 
                         <div class="card tropical-card fade-in">
-                            <h3>👶 Minori 12-16 anni</h3>
+                            <h3>Minori 12-16 anni</h3>
                             <div class="price-tag">€40,00</div>
                             <p><strong>Metà prezzo</strong></p>
                             <ul>
-                                <li>Sempre accompagnati</li>
-                                <li>Giornaliera o mezza giornata</li>
-                                <li>Tessera ARCIPESCA inclusa</li>
-                                <li>Supervisione adulto</li>
+                                <li>• Sempre accompagnati</li>
+                                <li>• Giornaliera o mezza giornata</li>
+                                <li>• Tessera ARCIPESCA inclusa</li>
+                                <li>• Supervisione adulto</li>
                             </ul>
                         </div>
-
-                        <div class="card tropical-card fade-in">
-                            <h3>🌙 Notturna 18:00-24:00</h3>
+                      <div class="card tropical-card fade-in">
+                            <h3>Notturna 18:00-24:00</h3>
                             <div class="price-tag">€40,00</div>
                             <p><strong>6 ore serali</strong></p>
                             <ul>
-                                <li>Pesca serale/notturna</li>
-                                <li>Atmosfera magica</li>
-                                <li>Su prenotazione</li>
-                                <li>Massimo 8 pescatori</li>
+                                <li>• Pesca serale/notturna</li>
+                                <li>• Atmosfera magica</li>
+                                <li>• Su prenotazione</li>
+                                <li>• Massimo 8 pescatori</li>
                             </ul>
                         </div>
-
-                        <div class="card tropical-card fade-in">
-                            <h3>🌃 Notturna 18:00-8:00</h3>
+                      <div class="card tropical-card fade-in">
+                            <h3>Notturna 18:00-8:00</h3>
                             <div class="price-tag">€60,00</div>
                             <p><strong>14 ore complete</strong></p>
                             <ul>
-                                <li>Intera notte di pesca</li>
-                                <li>Gruppi: €50,00 cad.</li>
-                                <li>Esperienza unica</li>
-                                <li>Prenotazione obbligatoria</li>
+                               <li>• Intera notte di pesca</li>
+                                <li>• Gruppi: €50,00 cad.</li>
+                                <li>• Esperienza unica</li>
+                                <li>• Prenotazione obbligatoria</li>
                             </ul>
                         </div>
                     </div>
-
                     <div class="tropical-box scale-in">
                         <h3>🎁 Promo Speciale Tropicali</h3>
                         <p><strong>Sconto 50% sulla giornata successiva</strong> se non si pesca nulla nella prima uscita!</p>
@@ -2095,76 +1936,76 @@
                         <p>Stagione invernale - Storioni, carpe e pesci tradizionali</p>
                     </div>
 
-                    <div class="grid">
+                    <div class="tariff-grid">
                         <div class="card traditional-card fade-in">
-                            <h3>🎣 Giornaliera Tradizionale</h3>
+                            <h3>Giornaliera Tradizionale</h3>
                             <div class="price-tag traditional">€20,00</div>
                             <p><strong>+ Tessera €5,00</strong></p>
                             <ul>
-                                <li>Pesca a carpe comuni</li>
-                                <li>Storioni piccoli</li>
-                                <li>Pesci tradizionali</li>
-                                <li>8 ore di pesca</li>
+                                <li>• Pesca a carpe comuni</li>
+                                <li>• Storioni piccoli</li>
+                                <li>• Pesci tradizionali</li>
+                                <li>• 8 ore di pesca</li>
                             </ul>
                         </div>
 
                         <div class="card traditional-card fade-in">
-                            <h3>🌤️ Mezza Giornata</h3>
+                            <h3>Mezza Giornata</h3>
                             <div class="price-tag traditional">€10,00</div>
                             <p><strong>+ Tessera €5,00</strong></p>
                             <ul>
-                                <li>4 ore di pesca</li>
-                                <li>Pesci tradizionali</li>
-                                <li>Ideale per famiglie</li>
-                                <li>Principianti benvenuti</li>
+                                <li>• 4 ore di pesca</li>
+                                <li>• Pesci tradizionali</li>
+                                <li>• Ideale per famiglie</li>
+                                <li>• Principianti benvenuti</li>
                             </ul>
                         </div>
 
                         <div class="card traditional-card fade-in">
-                            <h3>🐟 Intero Lago Storioni/Carpe</h3>
+                            <h3>Intero Lago Storioni/Carpe</h3>
                             <div class="price-tag traditional">€60,00</div>
                             <p><strong>Lago esclusivo</strong></p>
                             <ul>
-                                <li>Uso esclusivo del lago</li>
-                                <li>Storioni e carpe grandi</li>
-                                <li>Massimo 6 pescatori</li>
-                                <li>Giornata intera</li>
+                                <li>• Uso esclusivo del lago</li>
+                                <li>• Storioni e carpe grandi</li>
+                                <li>• Massimo 6 pescatori</li>
+                                <li>• Giornata intera</li>
                             </ul>
                         </div>
 
                         <div class="card traditional-card fade-in">
-                            <h3>🌊 Troutarea</h3>
+                            <h3>Troutarea</h3>
                             <div class="price-tag traditional">€3,00/ora</div>
                             <p><strong>Pesca a ore</strong></p>
                             <ul>
-                                <li>Solo esche rigide</li>
-                                <li>Trote iridea fresche</li>
-                                <li>Retino gomma obbligatorio</li>
-                                <li>No Kill o a pagamento</li>
+                                <li>• Solo esche rigide</li>
+                                <li>• Trote iridea fresche</li>
+                                <li>• Retino gomma obbligatorio</li>
+                                <li>• No Kill o a pagamento</li>
                             </ul>
                         </div>
 
                         <div class="card traditional-card fade-in">
-                            <h3>🎣 Trota Lago/No Kill</h3>
+                            <h3>Trota Lago/No Kill</h3>
                             <div class="price-tag traditional">€10-20,00</div>
                             <p><strong>+ Tessera €5,00</strong></p>
                             <ul>
-                                <li>1 canna massimo</li>
-                                <li>Esche rigide only</li>
-                                <li>Ami barbless</li>
-                                <li>Vietato pasturare</li>
+                                <li>• 1 canna massimo</li>
+                                <li>• Esche rigide only</li>
+                                <li>• Ami barbless</li>
+                                <li>• Vietato pasturare</li>
                             </ul>
                         </div>
 
                         <div class="card traditional-card fade-in">
-                            <h3>🐟 Permesso "Trota Lago"</h3>
+                            <h3>Permesso "Trota Lago"</h3>
                             <div class="price-tag traditional">€5,00</div>
                             <p><strong>+ Tessera + Trote €5/kg</strong></p>
                             <ul>
-                                <li>Solo camole/kaimani/vermi</li>
-                                <li>Vietato selezionare pescato</li>
-                                <li>Trote fresche garantite</li>
-                                <li>Pesatura finale</li>
+                                <li>• Solo camole/kaimani/vermi</li>
+                                <li>• Vietato selezionare pescato</li>
+                                <li>• Trote fresche garantite</li>
+                                <li>• Pesatura finale</li>
                             </ul>
                         </div>
                     </div>
@@ -2199,7 +2040,7 @@
                             <p>• Parcheggio gratuito disponibile</p>
                         </div>
 
-                        <div class="contact-info slide-in-right">
+                     <div class="contact-info slide-in-right">
                             <h3>📞 Contatti Diretti</h3>
                             <p><strong>Cell/WhatsApp:</strong> 348 451 9244</p>
                             <p><strong>Cell/WhatsApp:</strong> 333 224 3858</p>
@@ -2212,7 +2053,6 @@
                             <p>Prenotazioni preferibilmente via WhatsApp</p>
                         </div>
                     </div>
-
                     <div class="tropical-box fade-in">
                         <h3>🕐 Orari di Apertura</h3>
                         <div class="grid">
@@ -2234,7 +2074,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="warning-box scale-in">
                         <h3>📋 Prenotazione Obbligatoria</h3>
                         <p><strong>La prenotazione è sempre obbligatoria</strong> per garantire la disponibilità del posto e organizzare al meglio la vostra esperienza.</p>
@@ -2266,7 +2105,7 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-map">
+                <div class="footer-left">
                     <iframe width="300" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=300&amp;height=250&amp;hl=en&amp;q=Via%20Mazzini,%2097%20GAMBOLO+(Lago%20River%20Monsters%20)&amp;t=h&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" style="border-radius: 10px;"></iframe>
                 </div>
                 
@@ -2277,13 +2116,42 @@
                     <h3>Lago River Monsters</h3>
                     <p>Via Mazzini 97 - 27025 Gambolò (PV)</p>
                     <p>Presso Agriturismo "Alla Nellina"</p>
-                    <p>Tel: 348 451 9244 - 333 224 3858</p>
+                    <p>Tel: 348 451 9244</p>
                 </div>
                 
-                <div class="footer-buttons">
-                    <a href="tel:+393484519244" class="footer-button">Chiama</a>
-                    <a href="https://wa.me/393484519244" class="footer-button">WhatsApp</a>
-                    <a href="#" onclick="showPage('contact')" class="footer-button">Contatti</a>
+                <div class="footer-right">
+                    <div class="footer-social-icons">
+                        <a href="tel:+393484519244" class="social-icon phone-icon" title="Chiama">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/393484519244" class="social-icon whatsapp-icon-footer" target="_blank" title="WhatsApp">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/LagoRiverMonsters" class="social-icon facebook-icon" target="_blank" title="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/lagorivermonsters" class="social-icon instagram-icon" target="_blank" title="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" onclick="showPage('contact')" class="social-icon email-icon" title="Contatti">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <div class="footer-buttons">
+                        <a href="https://wa.me/393484519244?text=Ciao! Vorrei prenotare una giornata di pesca al Lago River Monsters." class="cta-button" target="_blank">📞 Prenota Ora</a>
+                        <a href="#" onclick="showPage('rules')" class="cta-button">📋 Regolamento</a>
+                    </div>
                 </div>
             </div>
             
@@ -2292,8 +2160,6 @@
             </div>
         </div>
     </footer>
-
-
 
 
 
@@ -2349,7 +2215,7 @@
 
         // Animation trigger function
         function triggerAnimations() {
-            const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in, .bounce-in, .rotate-in, .slide-up');
+            const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in, .bounce-in, .rotate-in, .slide-up, .zoom-in, .flip-in, .slide-in-up, .slide-in-down');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -2396,5 +2262,5 @@
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9756626371d80e42',t:'MTc1NjI0MzM0NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9756626371d80e42',t:'MTc1NjI0MzM0NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9765361f6017ee5d',t:'MTc1NjM5ODgxNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
