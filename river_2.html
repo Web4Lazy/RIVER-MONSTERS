@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>River Monsters - Lago di Pesca Sportiva</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script async src="https://tally.so/widgets/embed.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
+        .font-opensans { font-family: 'Open Sans', sans-serif; }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://i.postimg.cc/JhsJQvZP/Whats-App-Image-2025-09-01-at-16-48-35.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            min-height: 100dvh; /* Dynamic viewport height for mobile */
+        }
+        
+        @media (max-width: 768px) {
+            .hero-bg {
+                background-attachment: scroll; /* Better performance on mobile */
+                min-height: calc(100vh - 144px); /* Account for mobile header */
+                padding-top: 144px; /* Space for fixed header */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-bg {
+                min-height: calc(100vh - 120px);
+                padding-top: 120px;
+            }
+        }
+        
+        /* iPhone specific optimizations */
+        @supports (-webkit-touch-callout: none) {
+            .hero-bg {
+                min-height: -webkit-fill-available;
+            }
+        }
+        
+        /* Mobile-first responsive improvements */
+        @media (max-width: 375px) {
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            .hero-bg {
+                padding-top: 100px;
+                min-height: calc(100vh - 100px);
+            }
+        }
+        
+        /* Ensure touch targets are large enough */
+        @media (max-width: 768px) {
+            button, a {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+        
+        /* Improve text readability on small screens */
+        @media (max-width: 480px) {
+            .text-xs { font-size: 0.75rem; }
+            .text-sm { font-size: 0.875rem; }
+            .text-base { font-size: 1rem; }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,255,0.15);
+        }
+        
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .hamburger span {
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .ticker-container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        
+        .ticker-track {
+            display: inline-flex;
+            animation: scroll 60s linear infinite;
+            gap: 20px;
+        }
+        
+        .ticker-image {
+            height: 180px;
+            width: auto;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .ticker-image:hover {
+            transform: scale(1.05);
+        }
+        
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body class="font-opensans bg-gray-900">
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-gray-900 shadow-lg z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-24 sm:h-32 md:h-36">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="https://i.postimg.cc/9XqM6ZFz/logo-river-monsters.png" alt="River Monsters Logo" class="h-20 sm:h-28 md:h-32 w-auto">
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" onclick="showPage('home')" class="text-white hover:text-blue-400 font-medium transition-colors">Home</a>
+                    <a href="#" onclick="showPage('chi-siamo')" class="text-white hover:text-blue-400 font-medium transition-colors">Chi Siamo</a>
+                    <a href="#" onclick="showPage('pesca')" class="text-white hover:text-blue-400 font-medium transition-colors">Il Lago</a>
+                    <a href="#" onclick="showPage('regolamento')" class="text-white hover:text-blue-400 font-medium transition-colors">Regolamento e Tariffe</a>
+                    <a href="#" onclick="showPage('contatti')" class="text-white hover:text-blue-400 font-medium transition-colors">Contatti</a>
+                </nav>
+                
+                <!-- Contact Buttons Desktop -->
+                <div class="hidden md:flex items-center space-x-3">
+                    <a href="https://www.facebook.com/lagorivermonsters/?locale=it_IT" target="_blank" rel="noopener noreferrer" class="text-white hover:text-blue-400 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/lago_river_monsters/?hl=en" target="_blank" rel="noopener noreferrer" class="text-white hover:text-pink-400 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="tel:+393332243858" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center space-x-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+                        </svg>
+                        <span class="text-sm">Chiama</span>
+                    </a>
+                    <a href="https://wa.me/393332243858" target="_blank" rel="noopener noreferrer" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center space-x-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                        </svg>
+                        <span class="text-sm">WhatsApp</span>
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden hamburger flex flex-col space-y-1" onclick="toggleMobileMenu()">
+                    <span class="w-6 h-0.5 bg-white block"></span>
+                    <span class="w-6 h-0.5 bg-white block"></span>
+                    <span class="w-6 h-0.5 bg-white block"></span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu md:hidden fixed top-24 sm:top-32 md:top-36 left-0 w-full h-screen bg-gray-900 z-40">
+            <nav class="flex flex-col p-6 space-y-4">
+                <a href="#" onclick="showPage('home'); toggleMobileMenu()" class="text-white text-lg font-medium py-2">Home</a>
+                <a href="#" onclick="showPage('chi-siamo'); toggleMobileMenu()" class="text-white text-lg font-medium py-2">Chi Siamo</a>
+                <a href="#" onclick="showPage('pesca'); toggleMobileMenu()" class="text-white text-lg font-medium py-2">Il Lago</a>
+                <a href="#" onclick="showPage('regolamento'); toggleMobileMenu()" class="text-white text-lg font-medium py-2">Regolamento e Tariffe</a>
+                <a href="#" onclick="showPage('contatti'); toggleMobileMenu()" class="text-white text-lg font-medium py-2">Contatti</a>
+                
+                <!-- Social Links Mobile -->
+                <div class="flex space-x-4 mt-4">
+                    <a href="https://www.facebook.com/lagorivermonsters/?locale=it_IT" target="_blank" rel="noopener noreferrer" class="text-white hover:text-blue-400 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/lago_river_monsters/?hl=en" target="_blank" rel="noopener noreferrer" class="text-white hover:text-pink-400 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="flex flex-col space-y-3 mt-6">
+                    <a href="tel:+393332243858" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg transition-colors flex items-center justify-center space-x-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+                        </svg>
+                        <span>Chiama Ora</span>
+                    </a>
+                    <a href="https://wa.me/393332243858" target="_blank" rel="noopener noreferrer" class="bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-lg transition-colors flex items-center justify-center space-x-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                        </svg>
+                        <span>WhatsApp</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero-bg flex items-center justify-center text-center text-white min-h-screen">
+            <div class="container mx-auto px-4 py-8 pt-32 sm:pt-40 md:pt-48">
+                <h1 class="font-montserrat font-bold text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-4 sm:mb-6 leading-tight" style="color: #0080ff;">Lago River Monsters</h1>
+                <p class="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-6 sm:mb-8 max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto px-3 sm:px-4" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8); border: 2px solid #3b82f6; padding: 8px 12px sm:padding: 12px 16px; border-radius: 12px; background: rgba(0,0,0,0.3); backdrop-filter: blur(4px);">
+                    Tropicale, selvaggio, unico - Vivi l'emozione della pesca sportiva nel cuore della natura.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-sm sm:max-w-none mx-auto px-4 sm:px-0">
+                    <a href="#" onclick="showPage('contatti')" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl transition-colors text-center text-sm sm:text-base">Prenota</a>
+                    <a href="#" onclick="showPage('regolamento')" class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl transition-colors text-center text-sm sm:text-base">Regolamento</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image Ticker -->
+        <section class="py-8 bg-gray-800 overflow-hidden">
+            <div class="ticker-container">
+                <div class="ticker-track">
+                    <img src="https://i.postimg.cc/nrgfq81q/11.jpg" alt="Pesca 1" class="ticker-image">
+                    <img src="https://i.postimg.cc/W3pVvw3q/10.jpg" alt="Pesca 2" class="ticker-image">
+                    <img src="https://i.postimg.cc/JhN7mh5v/1.jpg" alt="Pesca 3" class="ticker-image">
+                    <img src="https://i.postimg.cc/9FwhCMWb/13.jpg" alt="Pesca 4" class="ticker-image">
+                    <img src="https://i.postimg.cc/zvV1LDTJ/14.jpg" alt="Pesca 5" class="ticker-image">
+                    <img src="https://i.postimg.cc/DfMT9sKm/15.jpg" alt="Pesca 6" class="ticker-image">
+                    <img src="https://i.postimg.cc/BnWG60b0/16.jpg" alt="Pesca 7" class="ticker-image">
+                    <img src="https://i.postimg.cc/1zshGrD7/18.jpg" alt="Pesca 8" class="ticker-image">
+                    <img src="https://i.postimg.cc/YSRcbL3r/19.jpg" alt="Pesca 9" class="ticker-image">
+                    <img src="https://i.postimg.cc/YqWJTs3y/25.jpg" alt="Pesca 10" class="ticker-image">
+                    <img src="https://i.postimg.cc/44MDLgz9/24.jpg" alt="Pesca 11" class="ticker-image">
+                    <img src="https://i.postimg.cc/Zn1XC8Tc/23.jpg" alt="Pesca 12" class="ticker-image">
+                    <img src="https://i.postimg.cc/pTcwtN43/20.jpg" alt="Pesca 13" class="ticker-image">
+                    <img src="https://i.postimg.cc/Kz86Vcqn/21.jpg" alt="Pesca 14" class="ticker-image">
+                    <img src="https://i.postimg.cc/QCBR84rC/22.jpg" alt="Pesca 15" class="ticker-image">
+                    <img src="https://i.postimg.cc/90nC1wcR/5.jpg" alt="Pesca 16" class="ticker-image">
+                    <img src="https://i.postimg.cc/vZ9bLmkT/8.jpg" alt="Pesca 17" class="ticker-image">
+                    <img src="https://i.postimg.cc/rF7qr4h7/7.jpg" alt="Pesca 18" class="ticker-image">
+                    <img src="https://i.postimg.cc/PfpXrKy1/36.jpg" alt="Pesca 19" class="ticker-image">
+                    <img src="https://i.postimg.cc/wMv9hQYY/4.jpg" alt="Pesca 20" class="ticker-image">
+                    <img src="https://i.postimg.cc/59hxHvKT/34.jpg" alt="Pesca 21" class="ticker-image">
+                    <img src="https://i.postimg.cc/LhK0HmTQ/33.jpg" alt="Pesca 22" class="ticker-image">
+                    <img src="https://i.postimg.cc/4dy0PLyP/30.jpg" alt="Pesca 23" class="ticker-image">
+                    <img src="https://i.postimg.cc/NFrzqK1r/32.jpg" alt="Pesca 24" class="ticker-image">
+                    <img src="https://i.postimg.cc/R0My6Vzj/29.jpg" alt="Pesca 25" class="ticker-image">
+                    <img src="https://i.postimg.cc/FHX2vVCF/27.jpg" alt="Pesca 26" class="ticker-image">
+                    <img src="https://i.postimg.cc/cL7PLtPR/26.jpg" alt="Pesca 27" class="ticker-image">
+                    
+                    <!-- Duplicate for seamless loop -->
+                    <img src="https://i.postimg.cc/nrgfq81q/11.jpg" alt="Pesca 1" class="ticker-image">
+                    <img src="https://i.postimg.cc/W3pVvw3q/10.jpg" alt="Pesca 2" class="ticker-image">
+                    <img src="https://i.postimg.cc/JhN7mh5v/1.jpg" alt="Pesca 3" class="ticker-image">
+                    <img src="https://i.postimg.cc/9FwhCMWb/13.jpg" alt="Pesca 4" class="ticker-image">
+                    <img src="https://i.postimg.cc/zvV1LDTJ/14.jpg" alt="Pesca 5" class="ticker-image">
+                    <img src="https://i.postimg.cc/DfMT9sKm/15.jpg" alt="Pesca 6" class="ticker-image">
+                    <img src="https://i.postimg.cc/BnWG60b0/16.jpg" alt="Pesca 7" class="ticker-image">
+                    <img src="https://i.postimg.cc/1zshGrD7/18.jpg" alt="Pesca 8" class="ticker-image">
+                    <img src="https://i.postimg.cc/YSRcbL3r/19.jpg" alt="Pesca 9" class="ticker-image">
+                    <img src="https://i.postimg.cc/YqWJTs3y/25.jpg" alt="Pesca 10" class="ticker-image">
+                    <img src="https://i.postimg.cc/44MDLgz9/24.jpg" alt="Pesca 11" class="ticker-image">
+                    <img src="https://i.postimg.cc/Zn1XC8Tc/23.jpg" alt="Pesca 12" class="ticker-image">
+                    <img src="https://i.postimg.cc/pTcwtN43/20.jpg" alt="Pesca 13" class="ticker-image">
+                    <img src="https://i.postimg.cc/Kz86Vcqn/21.jpg" alt="Pesca 14" class="ticker-image">
+                    <img src="https://i.postimg.cc/QCBR84rC/22.jpg" alt="Pesca 15" class="ticker-image">
+                    <img src="https://i.postimg.cc/90nC1wcR/5.jpg" alt="Pesca 16" class="ticker-image">
+                    <img src="https://i.postimg.cc/vZ9bLmkT/8.jpg" alt="Pesca 17" class="ticker-image">
+                    <img src="https://i.postimg.cc/rF7qr4h7/7.jpg" alt="Pesca 18" class="ticker-image">
+                    <img src="https://i.postimg.cc/PfpXrKy1/36.jpg" alt="Pesca 19" class="ticker-image">
+                    <img src="https://i.postimg.cc/wMv9hQYY/4.jpg" alt="Pesca 20" class="ticker-image">
+                    <img src="https://i.postimg.cc/59hxHvKT/34.jpg" alt="Pesca 21" class="ticker-image">
+                    <img src="https://i.postimg.cc/LhK0HmTQ/33.jpg" alt="Pesca 22" class="ticker-image">
+                    <img src="https://i.postimg.cc/4dy0PLyP/30.jpg" alt="Pesca 23" class="ticker-image">
+                    <img src="https://i.postimg.cc/NFrzqK1r/32.jpg" alt="Pesca 24" class="ticker-image">
+                    <img src="https://i.postimg.cc/R0My6Vzj/29.jpg" alt="Pesca 25" class="ticker-image">
+                    <img src="https://i.postimg.cc/FHX2vVCF/27.jpg" alt="Pesca 26" class="ticker-image">
+                    <img src="https://i.postimg.cc/cL7PLtPR/26.jpg" alt="Pesca 27" class="ticker-image">
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Lake Sections -->
+        <section class="py-20 bg-gray-900">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="font-montserrat font-bold text-4xl mb-4" style="color: #0080ff;">I Nostri Laghi</h2>
+                    <p class="text-gray-300 text-lg">Due esperienze uniche per ogni tipo di pescatore</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
+                    <!-- Tropicali -->
+                    <div class="card-hover bg-gray-800 border-2 border-blue-500 p-4 sm:p-6 md:p-8 rounded-xl shadow-lg text-center">
+                        <div class="mb-6">
+                            <img src="https://i.postimg.cc/7YXYx20N/8.png" alt="Pesci Tropicali" class="w-32 h-32 mx-auto object-contain">
+                        </div>
+                        <h3 class="font-montserrat font-bold text-3xl mb-4" style="color: #0080ff;">Lago Tropicali</h3>
+                        <p class="text-gray-300 text-lg mb-6">Il nostro lago stagionale, solo 4 mesi, da Giugno a Settembre dedicato esclusivamente alle specie tropicali. Qui vivono Lucci Alligatore, Pacu, Coda rossa, Fasciatum, Pangasio e altre specie esotiche uniche in Italia. Un ambiente controllato per garantire il benessere di questi magnifici pesci.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center justify-center">
+                                <span class="text-2xl mr-2">🐟</span>
+                                <span class="text-white">Coda Rossa Enormi da record</span>
+                            </div>
+                            <div class="flex items-center justify-center">
+                                <span class="text-2xl mr-2">🦈</span>
+                                <span class="text-white">Lucci alligatore combattivi</span>
+                            </div>
+                            <div class="flex items-center justify-center">
+                                <span class="text-2xl mr-2">🐠</span>
+                                <span class="text-white">Pacu giganti vegetariani</span>
+                            </div>
+                            <div class="flex items-center justify-center">
+                                <span class="text-2xl mr-2">🌡️</span>
+                                <span class="text-white">Ambiente controllato</span>
+                            </div>
+                        </div>
+                        <button onclick="showPage('pesca')" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors">
+                            Scopri di Più
+                        </button>
+                    </div>
+
+                    <!-- Tradizionale -->
+                    <div class="card-hover bg-gray-800 border-2 border-blue-500 p-4 sm:p-6 md:p-8 rounded-xl shadow-lg text-center">
+                        <div class="mb-6">
+                            <img src="https://i.postimg.cc/1zV9c7TW/7.png" alt="Pesci Tradizionali" class="w-32 h-32 mx-auto object-contain">
+                        </div>
+                        <h3 class="font-montserrat font-bold text-3xl mb-4" style="color: #0080ff;">Lago Tradizionale</h3>
+                        <p class="text-gray-300 text-lg mb-6">Il lago dedicato alla pesca tradizionale con storioni, carpe comuni, trote e predatori nostrani. Perfetto per famiglie, principianti e per chi ama la pesca classica italiana in un ambiente naturale.</p>
+                        <div class="space-y-2 mb-6">
+                            <div class="flex items-center justify-center">
+                                <span class="text-2xl mr-2">🐟</span>
+                                <span class="text-white">Storioni fino a 80kg</span>
+                            </div>
+                            <div class="flex items-center justify-center">
+                                <span class="text-2xl mr-2">🎣</span>
+                                <span class="text-white">Carpe comuni e specchio, bass, lucci, reali, luccioperca, trote, carpe, koi, storioni e molto altro.</span>
+                            </div>
+                            <div class="flex items-center justify-center">
+                                <span class="text-2xl mr-2">🌊</span>
+                                <span class="text-white">Troutarea dedicata</span>
+                            </div>
+                            <div class="flex items-center justify-center">
+                                <span class="text-2xl mr-2">🏞️</span>
+                                <span class="text-white">Ambiente naturale</span>
+                            </div>
+                        </div>
+                        <button onclick="showPage('pesca')" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors">
+                            Scopri di Più
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Unique Experience Section -->
+        <section class="py-20 bg-gradient-to-br from-blue-900 to-blue-700">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="font-montserrat font-bold text-4xl mb-4" style="color: #0080ff;">🌟 Esperienza Unica in Europa</h2>
+                    <p class="text-blue-100 text-lg max-w-4xl mx-auto">
+                        Siamo l'unico centro Europa specializzato nella pesca ai tropicali. I nostri pesci sono allevati con cura da oltre 15 anni e offrono combattimenti emozionanti in un ambiente controllato e sicuro.
+                    </p>
+                </div>
+                
+                <div class="max-w-3xl mx-auto">
+                    <ul class="space-y-4 text-left">
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-4 mt-1">🏆</span>
+                            <div>
+                                <span class="font-montserrat font-semibold text-xl text-white">20 Anni di Esperienza</span>
+                                <span class="text-blue-100 ml-2">nell'allevamento e cura di specie tropicali di grandi dimensioni</span>
+                            </div>
+                        </li>
+                        
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-4 mt-1">🐠</span>
+                            <div>
+                                <span class="font-montserrat font-semibold text-xl text-white">Specie Uniche</span>
+                                <span class="text-blue-100 ml-2">impossibili da trovare altrove in Europa per la pesca sportiva</span>
+                            </div>
+                        </li>
+                        
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-4 mt-1">🛡️</span>
+                            <div>
+                                <span class="font-montserrat font-semibold text-xl text-white">Ambiente Controllato</span>
+                                <span class="text-blue-100 ml-2">e sicuro per garantire il benessere dei pesci e dei pescatori</span>
+                            </div>
+                        </li>
+                        
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-4 mt-1">👨‍🏫</span>
+                            <div>
+                                <span class="font-montserrat font-semibold text-xl text-white">Staff Esperto</span>
+                                <span class="text-blue-100 ml-2">sempre disponibile per consigli e assistenza durante la pesca</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Preview -->
+        <section class="py-20 bg-gray-800">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="font-montserrat font-bold text-4xl mb-4" style="color: #0080ff;">Perché Scegliere River Monsters</h2>
+                    <p class="text-gray-300 text-lg">Servizi professionali per un'esperienza indimenticabile</p>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+                    <div class="text-center bg-gray-700 p-4 sm:p-6 rounded-xl shadow-lg">
+                        <div class="text-4xl mb-4">🐠</div>
+                        <h3 class="font-montserrat font-semibold text-xl text-white mb-3">Specie Uniche in Italia</h3>
+                        <p class="text-gray-300 text-sm">L'unico lago dove pescare Lucci alligatore, Coda Rossa, Pacu giganti e altre specie tropicali.</p>
+                    </div>
+                    
+                    <div class="text-center bg-gray-700 p-4 sm:p-6 rounded-xl shadow-lg">
+                        <div class="text-4xl mb-4">🏆</div>
+                        <h3 class="font-montserrat font-semibold text-xl text-white mb-3">Esperienza Garantita</h3>
+                        <p class="text-gray-300 text-sm">Oltre 20 anni di esperienza nell'allevamento di pesci tropicali. Pesci sani, forti e combattivi per un'esperienza indimenticabile.</p>
+                    </div>
+                    
+                    <div class="text-center bg-gray-700 p-4 sm:p-6 rounded-xl shadow-lg">
+                        <div class="text-4xl mb-4">📍</div>
+                        <h3 class="font-montserrat font-semibold text-xl text-white mb-3">Posizione Strategica</h3>
+                        <p class="text-gray-300 text-sm">A soli 40 km da Pavia. Facilmente raggiungibile dall'autostrada A4, uscita Marcallo-Mesero.</p>
+                    </div>
+                    
+                    <div class="text-center bg-gray-700 p-4 sm:p-6 rounded-xl shadow-lg">
+                        <div class="text-4xl mb-4">🎯</div>
+                        <h3 class="font-montserrat font-semibold text-xl text-white mb-3">Catch & Release</h3>
+                        <p class="text-gray-300 text-sm">Pesca sportiva 100% catch & release per preservare questi magnifici esemplari.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CHI SIAMO PAGE -->
+    <div id="chi-siamo" class="page">
+        <section class="pt-32 sm:pt-40 md:pt-48 pb-12 sm:pb-16 md:pb-20 bg-gray-900">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h1 class="font-montserrat font-bold text-5xl mb-4" style="color: #0080ff;">Chi Siamo</h1>
+                    <p class="text-gray-300 text-lg max-w-3xl mx-auto">La storia, la passione e la dedizione che hanno dato vita a River Monsters</p>
+                </div>
+                
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="font-montserrat font-bold text-3xl mb-6" style="color: #0080ff;">Perché Questa Scelta</h2>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        L'idea nasce da <strong>Angelo e Laura</strong>, appassionati di specie tropicali di grosse dimensioni, ma anche di pesca e tutto ciò che riguarda gli animali e la natura.
+                    </p>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        Negli anni, i pesci da noi allevati sono aumentati e cresciuti; esattamente come i costi. Oltre i nostri soliti pesci, arrivano spesso i "pesci ormai troppo grandi" di privati, parchi, negozi per cui, le bocche da sfamare sono sempre tante e ogni anno più grosse.
+                    </p>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-12">
+                        La gestione ora è passata a Laura e poiché già è difficile ricevere donazioni quando si tratta di animali come cani o gatti, abbiamo pensato di fondere tutto ciò che abbiamo e ci piace fare, per creare un luogo in cui i pesci possono star bene e riprodursi (abbiamo qualche progetto), aiutandoci ad aiutarli, in un certo senso! Essendo un circolo di pesca sportiva, tutti i ricavi finiscono tassativamente nel mantenimento degli stessi.
+                    </p>
+                    
+                    <h3 class="font-montserrat font-bold text-2xl mb-4" style="color: #0080ff;">Una Passione Diventata Realtà</h3>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                        In parallelo all'attività di rescue di pesci tropicali XL che offriamo da anni (a nostre spese) e che continuiamo ad offrire, abbiamo pensato di autofinanziarci creando - con i tropicali allevati da noi o acquistati - un lago di pesca sportiva C&R.
+                    </p>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                        Ovviamente i tropicali sono presenti solo nella bella stagione, causa temperature. Teniamo a precisare che le specie pescabili sono robuste rispetto ai classici pesci da fiume; ed abbiamo evitato di proposito le specie più delicate o stressabili.
+                    </p>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        Vi è inoltre un preciso regolamento ed un controllo ferreo atto ad evitare qualsiasi spiacevole inconveniente o lungaggine della cattura e rilascio. Sono pur sempre animali allevati da noi sin da piccoli e con un certo valore; quindi va da sè che ci teniamo parecchio.
+                    </p>
+                    
+                    <p class="text-gray-300 text-lg leading-relaxed">
+                        <strong>Importante:</strong> Né gli adulti né gli eventuali avannotti hanno modo di entrare in acque libere.
+                    </p>
+                </div>
+                
+
+            </div>
+        </section>
+    </div>
+
+    <!-- PESCA PAGE -->
+    <div id="pesca" class="page">
+        <section class="pt-32 sm:pt-40 md:pt-48 pb-12 sm:pb-16 md:pb-20 bg-gray-900">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h1 class="font-montserrat font-bold text-5xl mb-4" style="color: #3b82f6;">Il Lago</h1>
+                    <p class="text-gray-300 text-lg max-w-4xl mx-auto">
+                        In disuso da anni, in pochi mesi lo abbiamo rimesso in sesto ed ancora non ci siamo fermati! Abbiamo mille idee e speriamo di realizzarle tutte. Non è enorme, ma speriamo di ingrandirci presto se ci supporterete!
+                    </p>
+                </div>
+                
+                <div class="max-w-6xl mx-auto">
+                    <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
+                        <div>
+                            <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                                Il lago principale ha una superficie di <strong>4000 metri quadri</strong>, rive dolci, alcune zone sono invece ripide; presenta anse, buche profonde, ninfee, rami/alberelli caduti; insomma nulla a che vedere con i classici laghetti.
+                            </p>
+                            <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                                Il laghetto dei tropicali invece è più piccolo e basso con due isolotti, ma anch'esso è studiato e piantumato in modo da essere il più naturale possibile, questo perché, oltre a far stare il meglio possibile i pesci, vogliamo offrirvi il massimo della naturalezza pur restando in un lago di pesca sportiva.
+                            </p>
+                        </div>
+                        <div class="rounded-2xl overflow-hidden shadow-lg">
+                            <img src="https://i.postimg.cc/SsZky3y0/Whats-App-Image-2025-09-01-at-16-53-19.jpg" alt="Vista del lago River Monsters" class="w-full h-80 object-cover">
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="order-2 md:order-1 rounded-2xl overflow-hidden shadow-lg">
+                            <img src="https://i.postimg.cc/CKgYvgpN/9.jpg" alt="300 pesci da 30cm a 1 metro" class="w-full h-80 object-cover">
+                        </div>
+                        <div class="order-1 md:order-2">
+                            <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                                Oltre alle bellissime querce, fiori tropicali e palme danno quel tocco di colore ed esotico che non guasta mai, rendendo il tutto anche più interessante.
+                            </p>
+                            <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                                Nel lago ci sono circa <strong>300 pesci</strong> di dimensioni variabili tra i 30 cm e 1 metro (e possono crescere ancora parecchio). I pesci tropicali sono stati cresciuti sino ad ora da noi (sono quasi 5 anni che li alleviamo).
+                            </p>
+                            <p class="text-gray-300 text-lg leading-relaxed">
+                                Oltre ai laghi, vi è anche un fiumiciattolo, sempre di proprietà, adatto allo spinning, con lucci, amur, carpe, bass, branzini ecc. Ninfee a zone, per non rendervela troppo facile, e rive erbose con canne e vegetazione classica.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-12 bg-blue-600 p-6 sm:p-8 rounded-2xl border border-blue-500 shadow-lg">
+                        <p class="text-white text-base sm:text-lg font-medium leading-relaxed">
+                            Noi siamo orgogliosi di quel che abbiamo fatto fino ad oggi e stiamo continuando a fare, nonostante le difficoltà e i sacrifici.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Dove Siamo Section -->
+                <section class="py-20 bg-gray-800">
+                    <div class="container mx-auto px-4">
+                        <div class="max-w-4xl mx-auto">
+                            <h2 class="font-montserrat font-bold text-4xl mb-8" style="color: #0080ff;">Dove Siamo</h2>
+                            
+                            <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                                Il lago River Monsters è situato a <strong>Gambolò</strong>, un tranquillo paesino in provincia di Pavia, in piena campagna ma con comoda strada asfaltata.
+                            </p>
+                            
+                            <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                                Immerso nella natura, tra risaie e boschetti si apre il nostro lago in stile "wild", con piccoli ostacoli naturali qua e là che faranno ragionare e mai annoiare nemmeno il pescatore più esperto. Ogni postazione è dotata di tavolino, posacenere e bidoncino per i vari rifiuti.
+                            </p>
+                            
+                            <p class="text-gray-300 text-lg leading-relaxed mb-8">
+                                È anche possibile inserirvi un ombrellone; poiché il nostro lago è sì, circondato dal bosco che garantisce sempre una leggera brezza, ma è anche ben assolato.
+                            </p>
+                            
+                            <h3 class="font-montserrat font-semibold text-xl text-white mb-4">📍 Informazioni Pratiche</h3>
+                            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                                <div>
+                                    <p class="text-gray-200 mb-2"><strong>Indirizzo:</strong></p>
+                                    <p class="text-gray-300 mb-4">Il lago si trova all'interno del parco di Villa Nellina, via Mazzini 97.</p>
+                                    
+                                    <p class="text-gray-200 mb-2"><strong>Servizi:</strong></p>
+                                    <p class="text-gray-300">È presente un chiosco e zona ristoro, con bibite, panini, gelati ecc.</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-200 mb-2"><strong>Servizi Disponibili:</strong></p>
+                                    <ul class="space-y-1 text-gray-300 mb-4">
+                                        <li>• Pernottamento in tenda o camper</li>
+                                        <li>• Chiosco con ristoro</li>
+                                        <li>• Postazioni attrezzate</li>
+                                        <li>• Parcheggio gratuito</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <h4 class="font-semibold text-lg text-red-400 mb-3">⚠️ Note Importanti</h4>
+                            <ul class="space-y-2 text-gray-300 mb-8">
+                                <li>• Non siamo muniti di colonnine per la corrente</li>
+                                <li>• Pur amando i cani, il loro ingresso non è consentito</li>
+                                <li>• Evitare conflitti con animali del lago</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
+
+    <!-- REGOLAMENTO PAGE -->
+    <div id="regolamento" class="page">
+        <section class="pt-32 sm:pt-40 md:pt-48 pb-12 sm:pb-16 md:pb-20 bg-gray-900">
+            <div class="container mx-auto px-4 max-w-5xl">
+                <div class="text-center mb-12">
+                    <h1 class="font-montserrat font-bold text-5xl mb-4" style="color: #0080ff;">📋 Regolamento e Tariffe</h1>
+                    <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-8 rounded-2xl">
+                        <p class="text-red-700 font-medium">
+                            <strong>Regolamento Obbligatorio:</strong> Il rispetto del regolamento è fondamentale per garantire la sicurezza di tutti e il benessere dei pesci. 
+                            La violazione delle regole comporta l'allontanamento immediato senza rimborso.
+                        </p>
+                        <p class="text-red-600 mt-2">
+                            Prenotando o entrando nel lago si accetta integralmente il regolamento.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Regolamento Content -->
+                <div class="bg-white border-2 border-gray-200 rounded-xl p-8 mb-12">
+                    <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed text-center">
+                        <h2 class="font-montserrat font-bold text-3xl text-black mb-8">🐠 REGOLAMENTO PESCA TROPICALI</h2>
+                        
+                        <p class="mb-6"><strong>È OBBLIGATORIO AVERE:</strong></p>
+                        <div class="mb-6 space-y-2">
+                            <p>• <strong>Guadino adeguato</strong> (da carp fishing, gommato, robusto)</p>
+                            <p>• <strong>Monofilo o treccia da 40kg</strong></p>
+                            <p>• <strong>Cavetto acciaio</strong> (per emergenze potete acquistarli all'entrata)</p>
+                            <p>• <strong>Ami senza ardiglione (Barbless)</strong> o ardiglione schiacciato. Se durante i nostri controlli risultano ami con ardiglione, consegue l'immediato allontanamento. (Per emergenze potete acquistarli all'entrata)</p>
+                            <p>• <strong>Materassino</strong> (per emergenze, in quantità limitata, potete noleggiarne uno all'entrata, gratuitamente)</p>
+                            <p>• <strong>Pinze lunghe almeno 30cm</strong> per la slamatura</p>
+                            <p>• <strong>Montature con piombi a perdere o in-line</strong>. Il piombo in caso di rottura deve sempre sfilarsi facilmente dalla lenza</p>
+                            <p>• <strong>Massimo due canne a testa</strong></p>
+                        </div>
+                        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
+                            <p class="text-yellow-800"><strong>IMPORTANTE:</strong> Si raccomanda di trattare i pesci con estrema cura rilasciandoli nel minor tempo possibile, bagnandoli e bagnandovi le mani adeguatamente, specialmente se c'è caldo.</p>
+                        </div>
+
+                        <p class="mb-6 mt-8"><strong>COSA È VIETATO:</strong></p>
+                        <div class="mb-6 space-y-2">
+                            <p>❌ Pescare con ami con ardiglione</p>
+                            <p>❌ Doppi ami</p>
+                            <p>❌ Ancorette</p>
+                            <p>❌ Boga</p>
+                            <p>❌ Pescare con il pesce vivo (pesce o gamberi presi altrove)</p>
+                            <p>❌ Interferire negativamente durante un recupero del vicino</p>
+                            <p>❌ MAI sollevare i pesci oltre i 30 cm da terra</p>
+                            <p>❌ Severamente VIETATI stracci o guanti con materiali antiscivolo per il maneggiamento</p>
+                        </div>
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                            <p class="text-blue-800"><strong>BUONSENSO:</strong> Se un pescatore ha un pesce in canna e sta combattendo: SU LE CANNE; lui ha la precedenza.</p>
+                        </div>
+
+                        <p class="mb-6 mt-8"><strong>È CONSENTITO:</strong></p>
+                        <div class="mb-6 space-y-2">
+                            <p>✅ Pescare e pasturare con boiles, pellets e pesce decongelato/morto, sempre nel rispetto dei vicini</p>
+                            <p>✅ <strong>Attrezzatura consentita per pasturare:</strong> Pva, Rocket, Spomb, Cucchiaione, Fionda e Cobra</p>
+                        </div>
+
+                        <p class="mb-6 mt-8"><strong>POSIZIONAMENTO DEL CAMPO:</strong></p>
+                        <div class="mb-6 space-y-3">
+                            <p><strong>Movimento e Distanze:</strong></p>
+                            <p>• È possibile girare liberamente sempre nel massimo rispetto di TUTTI i pescatori</p>
+                            <p>• Distanze di 10 metri l'uno dall'altro</p>
+                            
+                            <p><strong>Ordine e Pulizia:</strong></p>
+                            <p>• La postazione deve essere sempre lasciata in ordine</p>
+                            <p>• Sigarette nel posacenere e spazzatura negli appositi cestini</p>
+                            <p>• Assoluto divieto di lasciare la postazione incustodita con le canne in pesca</p>
+                            
+                            <p><strong>Ambiente:</strong></p>
+                            <p>• Assoluto divieto di estirpare e modificare la vegetazione circostante (rami, ninfee, piante, fiori ecc.)</p>
+                            <p>• Il nostro è un lago in stile wild e tutto è stato volutamente posizionato</p>
+                            <p>• Assoluto divieto di accendere fuochi a fiamma libera</p>
+                            
+                            <p><strong>Comportamento:</strong></p>
+                            <p>• Vietati schiamazzi, musica alta e altri comportamenti non adatti al contesto</p>
+                            <p>• Assoluto divieto di balneazione, ma è possibile entrare in acqua sino al ginocchio se necessario per recuperare o rilasciare</p>
+                            <p>• Nelle postazioni nei pressi dell'isolotto con ponte, è consentito sfruttare il medesimo, badando a non dar fastidio a chi è nei paraggi</p>
+                        </div>
+
+                        <h2 class="font-montserrat font-bold text-3xl text-black mb-8 mt-12">🐟 INVERNALE/PESCI TRADIZIONALI</h2>
+                        
+                        <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+                            <p class="text-green-800 font-bold text-lg">TUTTO A RILASCIO</p>
+                        </div>
+                        
+                        <div class="mb-6 space-y-3">
+                            <p><strong>Attrezzatura Base:</strong></p>
+                            <p>• Numero massimo di canne a postazione: <strong>2</strong></p>
+                            <p>• <strong>Materassino/culla tassativo</strong> (abbiamo a disposizione tappetini per le emergenze, ma è bene procurarseli)</p>
+                            <p>• <strong>Filo 0.50 in su</strong></p>
+                            
+                            <p><strong>Cosa è VIETATO:</strong></p>
+                            <p>❌ Usare formaggio, derivati del latte e similari</p>
+                            <p>❌ Ardiglione</p>
+                            <p>❌ Usare treccia</p>
+                            <p>❌ Ami dal 4.0 (incluso) in su</p>
+                            <p>❌ Usare pop up</p>
+                            <p>❌ Usare stracci, guanti ecc. utili ad aumentare il grip sul pesce - si usano le mani bagnate</p>
+                            
+                            <p><strong>Cosa è CONSENTITO:</strong></p>
+                            <p>✅ Pastura, nel rispetto degli altri pescatori</p>
+                            <p>✅ Tutti gli stili (sono presenti carpe, koi, storioni, black bass e reali)</p>
+                            
+                            <p><strong>Gestione Pesci:</strong></p>
+                            <p>• Raccomandiamo estrema cura e velocità nel fare foto</p>
+                            <p>• È possibile entrare in acqua per soggetti davvero molto grandi</p>
+                            <p>• <strong>Per storioni di grosse dimensioni:</strong> consigliato l'uso di una corda spessa almeno un dito, utilizzata a cappio (doppia). Corde troppo fini o usate singole TAGLIANO la pelle dell'animale</p>
+                            
+                            <p><strong>Ferrate:</strong></p>
+                            <p>• Confidiamo nel buon senso ed esperienza dei pescatori</p>
+                            <p>• Il lago non è grande ed ospita anche carpe e storioni piccoli</p>
+                            <p>• È assolutamente fuori luogo ferrare con estrema forza - non serve essere rudi</p>
+                        </div>
+
+                        <h3 class="font-montserrat font-bold text-2xl text-black mb-6 mt-8">🎣 TROUTAREA</h3>
+                        <div class="mb-6 space-y-2">
+                            <p><strong>Esche:</strong></p>
+                            <p>✅ Solo esche rigide</p>
+                            <p>❌ Vietate esche gomma/silicone, streamer o ami dressati</p>
+                            
+                            <p><strong>Attrezzatura:</strong></p>
+                            <p>• Tassativo il retino in gomma/silicone</p>
+                            <p>• Consigliato il releaser</p>
+                            <p>• Canna, mulinello e filo devono essere ultralight</p>
+                            <p>• Vietate ancorette ed ardiglione</p>
+                            
+                            <p><strong>Gestione Pesci:</strong></p>
+                            <p>• VIETATO TOCCARE le trote o appoggiarle a terra</p>
+                            <p>• Si slama in acqua o in sospensione nel retino</p>
+                            
+                            <p><strong>Note:</strong></p>
+                            <p>• La pesca a mosca è consentita, avvisare nel momento della prenotazione</p>
+                        </div>
+
+                        <h3 class="font-montserrat font-bold text-2xl text-black mb-6 mt-8">🐟 TROTA LAGO / TROTA NO KILL</h3>
+                        <div class="mb-6 space-y-3">
+                            <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                                <p class="text-blue-800"><strong>Permessi NO KILL:</strong> 15€ mezza giornata o 30€ intera (+ 7€ tessera)</p>
+                            </div>
+                            
+                            <p><strong>Regole Base:</strong></p>
+                            <p>• 1 canna a testa</p>
+                            <p>• Solo esche rigide - No naturali, no gomme</p>
+                            <p>• Vietato toccarle più del dovuto</p>
+                            <p>• Vietati stracci, guanti da grip - mani SEMPRE BAGNATE</p>
+                            <p>• Guadino gommato obbligatorio</p>
+                            <p>• Ammessi tutti gli stili</p>
+                            <p>• Vietata la pastura</p>
+                            <p>• Ami senza ardiglione, no ancorette, amo singolo</p>
+                            
+                            <div class="bg-green-50 border-l-4 border-green-500 p-4 mt-4">
+                                <p class="text-green-800"><strong>Permesso "TROTA A PORTAR VIA":</strong> 40€ massimo 6 pezzi (+ 7€ tessera)</p>
+                                <p class="text-green-700 text-sm mt-2">Una volta arrivati a 6 pezzi, si può continuare a NO KILL solo con esche rigide</p>
+                            </div>
+                            
+                            <p><strong>Esche Naturali Consentite:</strong></p>
+                            <p>• Solo camole, kaimani, vermi</p>
+                            <p>• Vietato pasturare, vietato buttare le uova in acqua</p>
+                            
+                            <p><strong>Tecniche Consentite:</strong></p>
+                            <p>• Striscio (bombardine massimo 4/5 grammi)</p>
+                            <p>• Penna</p>
+                            <p>• Galleggiante</p>
+                            
+                            <p><strong>Importante:</strong></p>
+                            <p>• Vietato selezionare il pescato - quel che si pesca si tiene</p>
+                            <p>• Si trattengono SOLO le trote, il resto va rilasciato con estrema cura</p>
+                            <p>• Con la tariffa fissa di 40€, si può decidere se andar via raggiunti i 6 pezzi o restare tutto il giorno passando al NO KILL</p>
+                            <p>• NON seminare le trote prese per il prato - sopprimerle subito e metterle nel sacchetto</p>
+                        </div>
+
+                        <h3 class="font-montserrat font-bold text-2xl text-black mb-6 mt-8">🌊 FIUME / PREDATORI CLASSICI</h3>
+                        <div class="mb-6 space-y-2">
+                            <p>✅ Consentiti tutti gli stili</p>
+                            <p>• Necessario il cavetto d'acciaio o fluorcarbon oltre 1 mm</p>
+                            <p>• Guadino lungo e ampio (rive alte)</p>
+                            <p>• Si raccomanda velocità nelle foto</p>
+                            
+                            <p><strong>VIETATO:</strong></p>
+                            <p>❌ Ardiglione ed ancorette</p>
+                            <p>❌ Stracci, guanti gommati e qualsiasi cosa che serva a maneggiare il pesce</p>
+                            <p>❌ Il boga</p>
+                            <p>❌ Maneggiare le trote - si slamano in acqua/nel guadino</p>
+                        </div>
+
+                        <h3 class="font-montserrat font-bold text-2xl text-black mb-6 mt-8">🐟 STORIONI / CARPE</h3>
+                        <div class="bg-orange-50 border-l-4 border-orange-500 p-4 mb-6">
+                            <p class="text-orange-800"><strong>⚠️ Disponibili solo 2 postazioni - Prenotazione sempre tassativa</strong></p>
+                        </div>
+
+                        <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 my-8">
+                            <p class="text-yellow-800 font-medium">
+                                <strong>N.B.</strong> La direzione si riserva la facoltà di controllare attrezzatura e terminali a propria discrezione ed in qualsiasi momento.
+                            </p>
+                        </div>
+
+                        <div class="bg-red-50 border-l-4 border-red-500 p-4 my-8">
+                            <p class="text-red-700 font-medium">
+                                Nel caso in cui, a causa di negligenza da parte del pescatore, avvenga il ferimento o il decesso del pesce pescato; verrà applicata un ammenda pari a <strong>50 Euro al kg per i comuni pesci da lago sportivo</strong>, e di <strong>200 Euro al kg per gli esemplari tropicali</strong>.
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-50 border-l-4 border-gray-500 p-4 my-8">
+                            <p class="text-gray-700">
+                                Qualsiasi infrazione del regolamento verrà seguita da uno ed unico richiamo ufficiale se di lieve entità (es. musica); o dall'immediata espulsione dal lago, con annesse eventuali sanzioni economiche, in caso di reiterazione o fatto grave (es. ami vietati). Si declina ogni responsabilità per eventuali furti, danni o sinistri a persone o cose che possono verificarsi all'interno del circolo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tariffe -->
+                <div class="bg-blue-600 border-2 border-blue-700 rounded-xl p-8 text-center">
+                    <h2 class="font-montserrat font-bold text-3xl text-white mb-8 flex items-center justify-center">
+                        <span class="text-2xl mr-2">💰</span>
+                        TARIFFE E INFO
+                    </h2>
+                    
+                    <div class="bg-white bg-opacity-10 p-6 rounded-xl border border-white border-opacity-20 text-center">
+                        <!-- Estivo/Tropicali -->
+                        <h3 class="font-semibold text-2xl text-white mb-4 text-center" style="color: #0080ff;">🐠 ESTIVO/TROPICALI</h3>
+                        <div class="space-y-3 text-sm mb-8">
+                            <p class="text-yellow-300 font-medium text-center">Prenotazione web obbligatoria</p>
+                            <div class="flex justify-between items-center py-2 border-b border-white border-opacity-20">
+                                <span class="text-white">Tessera associativa ANNUALE</span>
+                                <span class="font-bold text-yellow-300">€7</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-white border-opacity-20">
+                                <span class="text-white">Tariffa giornaliera</span>
+                                <span class="font-bold text-yellow-300 text-xl">€80</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-white border-opacity-20">
+                                <span class="text-white">Tariffa mezza giornata</span>
+                                <span class="font-bold text-yellow-300 text-xl">€50</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-white border-opacity-20">
+                                <span class="text-white">Minori di 16 anni</span>
+                                <span class="font-bold text-yellow-300">50%</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-white border-opacity-20">
+                                <span class="text-white">Gruppi 3+ persone</span>
+                                <span class="font-bold text-yellow-300">€60</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-white border-opacity-20">
+                                <span class="text-white">Notturna 18-24</span>
+                                <span class="font-bold text-yellow-300">€40</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-white border-opacity-20">
+                                <span class="text-white">Notturna 18-08</span>
+                                <span class="font-bold text-yellow-300">€60</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-white border-opacity-20">
+                                <span class="text-white">Gruppi 3+ notturna 18-08</span>
+                                <span class="font-bold text-yellow-300">€50</span>
+                            </div>
+                            <p class="text-green-300 text-xs mt-2 text-center">Se non si pesca nulla, 50% in meno sulla successiva</p>
+                        </div>
+
+                        <!-- Invernale/Tradizionali -->
+                        <div class="border-t border-white border-opacity-20 pt-6">
+                            <h3 class="font-semibold text-2xl text-white mb-4 text-center" style="color: #0080ff;">🐟 INVERNALE/TRADIZIONALI</h3>
+                            <div class="space-y-3 text-sm">
+                                <p class="text-green-300 font-medium text-center">TUTTO A RILASCIO</p>
+                                <div class="flex justify-between items-center py-2 border-b border-white border-opacity-20">
+                                    <span class="text-white">Tessera associativa</span>
+                                    <span class="font-bold text-yellow-300">€7</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-white border-opacity-20">
+                                    <span class="text-white">Tariffa giornaliera</span>
+                                    <span class="font-bold text-yellow-300 text-xl">€30</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-white border-opacity-20">
+                                    <span class="text-white">Tariffa mezza giornata</span>
+                                    <span class="font-bold text-yellow-300">€15</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-white border-opacity-20">
+                                    <span class="text-white">Troutarea (ora)</span>
+                                    <span class="font-bold text-yellow-300">€3</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-white border-opacity-20">
+                                    <span class="text-white">Lago intero (storioni/carpe)</span>
+                                    <span class="font-bold text-yellow-300">€60</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-white border-opacity-20">
+                                    <span class="text-white">Minori 16 anni (giornata)</span>
+                                    <span class="font-bold text-yellow-300">€15</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-white border-opacity-20">
+                                    <span class="text-white">Trota no kill mezza/intera</span>
+                                    <span class="font-bold text-yellow-300">€15/€30</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-white border-opacity-20">
+                                    <span class="text-white">Trota a portar via (max 6)</span>
+                                    <span class="font-bold text-yellow-300">€40</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 text-center bg-white bg-opacity-10 p-4 rounded-lg">
+                        <p class="text-white text-sm">
+                            <strong>* Prezzi IVA inclusa. Tessera associativa obbligatoria.</strong>
+                            <br><strong>* Pagamento: contanti, carta, bonifico bancario.</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CONTATTI PAGE -->
+    <div id="contatti" class="page">
+        <section class="pt-32 sm:pt-40 md:pt-48 pb-12 sm:pb-16 md:pb-20 bg-gray-900">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h1 class="font-montserrat font-bold text-5xl mb-4" style="color: #3b82f6;">Contatti & Prenotazioni</h1>
+                    <p class="text-gray-300 text-lg">Prenota la tua esperienza di pesca o richiedi informazioni</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                    <!-- Contact Form -->
+                    <div class="bg-black border-2 border-blue-500 p-8 rounded-xl">
+                        <h2 class="font-montserrat font-bold text-2xl mb-6" style="color: #3b82f6;">📝 Modulo Prenotazione</h2>
+                        <div class="h-[600px] rounded-lg overflow-hidden">
+                            <iframe data-tally-src="https://tally.so/r/wvRrxX" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" title="Prenota la tua battuta di pesca" class="rounded-lg"></iframe>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Info -->
+                    <div class="space-y-8">
+                        <div class="bg-gray-800 border-2 border-blue-500 p-6 rounded-xl">
+                            <h3 class="font-montserrat font-semibold text-xl text-white mb-4">📞 Informazioni di Contatto</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"/>
+                                    </svg>
+                                    <div>
+                                        <span class="text-white">Via Mazzini 97 - 27025 Gambolò (PV)</span>
+                                        <br>
+                                        <span class="text-gray-300 text-sm">Presso Agriturismo "Alla Nellina"</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+                                    </svg>
+                                    <a href="tel:+393332243858" class="text-white hover:text-blue-400">333 224 3858</a>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+                                    </svg>
+                                    <a href="mailto:info@rivermonsters.it" class="text-white hover:text-blue-400">info@rivermonsters.it</a>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg class="w-5 h-5 text-blue-400 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M16.2,16.2L11,13V7H12.5V12.2L17,14.9L16.2,16.2Z"/>
+                                    </svg>
+                                    <span class="text-white">Aperto 24/7 - Sempre disponibili</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Map -->
+                        <div class="bg-gray-800 border-2 border-blue-500 p-6 rounded-xl">
+                            <h3 class="font-montserrat font-semibold text-xl text-white mb-4">🗺️ Come Raggiungerci</h3>
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2798.123456789!2d8.8123456!3d45.2345678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sVia%20Mazzini%2097%2C%2027025%20Gambolo%CC%80%20PV!5e0!3m2!1sit!2sit!4v1234567890123" 
+                                width="100%" 
+                                height="256" 
+                                style="border:0; border-radius: 8px;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"
+                                class="w-full h-64 rounded-lg">
+                            </iframe>
+                            <div class="mt-4 text-sm text-gray-300">
+                                <p>🚗 Uscita A4: Marcallo-Mesero (15 min)</p>
+                                <p>🚌 Fermata bus: Linea 38 (200m)</p>
+                                <p>🅿️ Parcheggio gratuito disponibile</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="mb-4">
+                        <img src="https://i.postimg.cc/9XqM6ZFz/logo-river-monsters.png" alt="River Monsters Logo" class="h-36 w-auto mb-4">
+                    </div>
+                    <p class="text-gray-300">Il tuo lago di pesca sportiva nel cuore della natura. Due laghi unici per un'esperienza indimenticabile.</p>
+                </div>
+                
+                <div>
+                    <h3 class="font-montserrat font-semibold text-lg mb-4">Link Rapidi</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" onclick="showPage('home')" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#" onclick="showPage('chi-siamo')" class="text-gray-300 hover:text-white transition-colors">Chi Siamo</a></li>
+                        <li><a href="#" onclick="showPage('pesca')" class="text-gray-300 hover:text-white transition-colors">Il Lago</a></li>
+                        <li><a href="#" onclick="showPage('regolamento')" class="text-gray-300 hover:text-white transition-colors">Regolamento</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-montserrat font-semibold text-lg mb-4">Contatti</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>Lago River Monsters</li>
+                        <li>Via Mazzini 97</li>
+                        <li>27025 Gambolò (PV)</li>
+                        <li>Presso Agriturismo "Alla Nellina"</li>
+                        <li><a href="tel:+393332243858" class="hover:text-white transition-colors">333 224 3858</a></li>
+                        <li><a href="mailto:info@rivermonsters.it" class="hover:text-white transition-colors">info@rivermonsters.it</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-montserrat font-semibold text-lg mb-4">Seguici</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="https://www.facebook.com/lagorivermonsters/?locale=it_IT" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-blue-400 transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/lago_river_monsters/?hl=en" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-pink-400 transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="space-y-3">
+                        <a href="tel:+393332243858" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center space-x-2 w-full justify-center">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+                            </svg>
+                            <span class="text-sm">Chiama Ora</span>
+                        </a>
+                        <a href="https://wa.me/393332243858" target="_blank" rel="noopener noreferrer" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors flex items-center space-x-2 w-full justify-center">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                            <span class="text-sm">WhatsApp</span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">&copy; 2024 Lago River Monsters. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Form Widget Fixed -->
+    <div class="fixed bottom-4 right-4 z-1000">
+        <button onclick="toggleBookingForm()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-4 rounded-full shadow-lg transition-colors flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M17,12H12V17H10V12H5V10H10V5H12V10H17V12Z"/>
+            </svg>
+            <span class="font-semibold text-sm">PRENOTA ORA</span>
+        </button>
+    </div>
+
+    <!-- Booking Form Modal -->
+    <div id="bookingModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg shadow-xl w-full max-w-4xl h-[80vh] relative">
+                <button onclick="toggleBookingForm()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 z-10">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <iframe data-tally-src="https://tally.so/r/wvRrxX" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" title="Prenota la tua battuta di pesca" class="rounded-lg"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const hamburger = document.querySelector('.hamburger');
+            
+            mobileMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+
+        function toggleBookingForm() {
+            const modal = document.getElementById('bookingModal');
+            modal.classList.toggle('hidden');
+            
+            // Prevent body scroll when modal is open
+            if (!modal.classList.contains('hidden')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('bookingModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                toggleBookingForm();
+            }
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('bg-white/98');
+            } else {
+                header.classList.remove('bg-white/98');
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'986b737b40d14c62',t:'MTc1OTE0ODU5OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
